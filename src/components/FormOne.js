@@ -66,6 +66,20 @@ const FormOne = ({
     );
 }
 
+const FormSchema = Yup.object().shape({
+    // we have added custom error messgae for email validation
+    // default email validation error message is : `email must be a valid email`
+    email: Yup.string()
+        .email('Please enter valid email')
+        .required(),
+    password: Yup.string()
+        .min(3, 'Too Short!')
+        .max(30)
+        .required(),
+    plan: Yup.string()
+        .required('Required')
+});
+
 const FormOneFormik = withFormik({
     mapPropsToValues({ email, password, newsletter, plan }) {
         // if we pass props to component means we can get it in mapPropsToValues(props)
@@ -76,13 +90,7 @@ const FormOneFormik = withFormik({
             plan: plan || '2',
         }
     },
-    validationSchema: Yup.object().shape({
-        // we have added custom error messgae for email validation
-        // default email validation error message is : `email must be a valid email`
-        email: Yup.string().email('Please enter valid email').required(),
-        password: Yup.string().min(5).required(),
-        plan: Yup.string().required()
-    }),
+    validationSchema: FormSchema,
     handleSubmit(values, { resetForm, setErrors, setSubmitting }) {
         console.log({ values });
         setTimeout(() => {
