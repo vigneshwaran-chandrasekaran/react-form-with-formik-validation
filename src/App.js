@@ -1,12 +1,12 @@
 import React from 'react';
-import './App.css';
 import { withFormik, Form, Field } from 'formik';
 import * as Yup from 'yup';
 
 const App = ({
   values,
   errors,
-  touched
+  touched,
+  isSubmitting
 }) => {
   return (
     <div className="container">
@@ -56,7 +56,7 @@ const App = ({
               </Field>
             </div>
             {touched.plan && errors.plan && <div className='text-danger small my-2'>{errors.plan}</div>}
-            <button type="submit" className="btn btn-primary">Submit</button>
+            <button disabled={isSubmitting} type="submit" className="btn btn-primary">Submit</button>
           </Form>
         </div>
         <div className='col-2'></div>
@@ -82,8 +82,18 @@ const FormikApp = withFormik({
     password: Yup.string().min(5).required(),
     plan: Yup.string().required()
   }),
-  handleSubmit(values) {
+  handleSubmit(values, { resetForm, setErrors, setSubmitting }) {
     console.log({ values });
+    setTimeout(() => {
+      if (values.email === 'hello@gmail.com') {
+        setErrors({
+          email: 'Email is already taken'
+        });
+      } else {
+        resetForm();
+      }
+      setSubmitting(false);
+    }, 2000);
   }
 })(App);
 
