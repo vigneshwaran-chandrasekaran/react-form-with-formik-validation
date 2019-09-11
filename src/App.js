@@ -5,7 +5,8 @@ import * as Yup from 'yup';
 
 const App = ({
   values,
-  errors
+  errors,
+  touched
 }) => {
   return (
     <div className="container">
@@ -21,7 +22,7 @@ const App = ({
                 id="email"
                 name="email"
               />
-              {errors.email && <div className='text-danger small'>{errors.email}</div>}
+              {touched.email && errors.email && <div className='text-danger small my-2'>{errors.email}</div>}
             </div>
             <div className="form-group">
               <label htmlFor="pwd">Password:</label>
@@ -31,6 +32,7 @@ const App = ({
                 id="pwd"
                 name="password"
               />
+              {touched.password && errors.password && <div className='text-danger small my-2'>{errors.password}</div>}
             </div>
             <div className="form-group form-check">
               <label className="form-check-label">
@@ -46,13 +48,14 @@ const App = ({
             <div className="form-group">
               <label htmlFor="sel1">Select list:</label>
               <Field component="select" name="plan" className="form-control" id="sel1">
+                <option value=''>Select your plan</option>
                 <option value='1'>1</option>
                 <option value='2'>2</option>
                 <option value='3'>3</option>
                 <option value='4'>4</option>
               </Field>
             </div>
-
+            {touched.plan && errors.plan && <div className='text-danger small my-2'>{errors.plan}</div>}
             <button type="submit" className="btn btn-primary">Submit</button>
           </Form>
         </div>
@@ -73,8 +76,11 @@ const FormikApp = withFormik({
     }
   },
   validationSchema: Yup.object().shape({
-    email: Yup.string().email().required(),
-    password: Yup.string().min(50).required()
+    // we have added custom error messgae for email validation
+    // default email validation error message is : `email must be a valid email`
+    email: Yup.string().email('Please enter valid email').required(),
+    password: Yup.string().min(5).required(),
+    plan: Yup.string().required()
   }),
   handleSubmit(values) {
     console.log({ values });
