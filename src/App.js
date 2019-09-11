@@ -1,43 +1,58 @@
 import React from 'react';
 import './App.css';
-import { withFormik } from 'formik';
-import Yup from 'yup';
+import { withFormik, Form, Field } from 'formik';
+// import Yup from 'yup';
 
 const App = ({
-  values,
-  handleChange,
-  handleSubmit
+  values
 }) => {
   return (
     <div className="container">
       <div className='d-flex flex-row justify-content-center'>
         <div className='col-2'></div>
         <div className='col-6'>
-          <form onSubmit={handleSubmit}>
+          <Form>
             <div className="form-group">
               <label htmlFor="email">Email address:</label>
-              <input
+              <Field
                 type="email"
                 className="form-control"
                 id="email"
                 name="email"
-                value={values.email}
-                onChange={handleChange}
               />
             </div>
             <div className="form-group">
               <label htmlFor="pwd">Password:</label>
-              <input
+              <Field
                 type="password"
                 className="form-control"
                 id="pwd"
                 name="password"
-                value={values.password}
-                onChange={handleChange}
               />
             </div>
+            <div className="form-group form-check">
+              <label className="form-check-label">
+                <Field
+                  className="form-check-input"
+                  type="checkbox"
+                  name="newsletter"
+                  checked={values.newsletter}
+                />
+                <span> I agree your condition.</span>
+              </label>
+            </div>
+            <div className="form-group">
+              <label for="sel1">Select list:</label>
+              <Field component="select" name="plan" className="form-control" id="sel1">
+                <option value='1'>1</option>
+                <option value='2'>2</option>
+                <option value='3'>3</option>
+                <option value='4'>4</option>
+              </Field>
+            </div>
+
             <button type="submit" className="btn btn-primary">Submit</button>
-          </form>
+          </Form>
         </div>
         <div className='col-2'></div>
       </div>
@@ -46,16 +61,14 @@ const App = ({
 }
 
 const FormikApp = withFormik({
-  mapPropsToValues({ email, password }) {
+  mapPropsToValues({ email, password, newsletter, plan }) {
     // if we pass props to component means we can get it in mapPropsToValues(props)
     return {
       email: email || 'vigneshwaran',
-      password: password || ''
+      password: password || '',
+      newsletter: newsletter || false,
+      plan: plan || '2',
     }
-  },
-
-  handleChange(values) {
-    console.log({ values });
   },
 
   handleSubmit(values) {
