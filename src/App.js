@@ -1,10 +1,11 @@
 import React from 'react';
 import './App.css';
 import { withFormik, Form, Field } from 'formik';
-// import Yup from 'yup';
+import * as Yup from 'yup';
 
 const App = ({
-  values
+  values,
+  errors
 }) => {
   return (
     <div className="container">
@@ -20,6 +21,7 @@ const App = ({
                 id="email"
                 name="email"
               />
+              {errors.email && <div className='text-danger small'>{errors.email}</div>}
             </div>
             <div className="form-group">
               <label htmlFor="pwd">Password:</label>
@@ -42,7 +44,7 @@ const App = ({
               </label>
             </div>
             <div className="form-group">
-              <label for="sel1">Select list:</label>
+              <label htmlFor="sel1">Select list:</label>
               <Field component="select" name="plan" className="form-control" id="sel1">
                 <option value='1'>1</option>
                 <option value='2'>2</option>
@@ -70,7 +72,10 @@ const FormikApp = withFormik({
       plan: plan || '2',
     }
   },
-
+  validationSchema: Yup.object().shape({
+    email: Yup.string().email().required(),
+    password: Yup.string().min(50).required()
+  }),
   handleSubmit(values) {
     console.log({ values });
   }
