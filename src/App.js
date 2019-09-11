@@ -1,32 +1,54 @@
 import React from 'react';
 import './App.css';
+import { withFormik } from 'formik';
+import Yup from 'yup';
 
-function App() {
+const App = ({
+  values,
+  handleChange
+}) => {
   return (
     <div className="container">
-      <div className='col-4'></div>
-      <div className='col-4'>
-        <form action="/action_page.php">
-          <div className="form-group">
-            <label for="email">Email address:</label>
-            <input type="email" className="form-control" id="email" />
-          </div>
-          <div className="form-group">
-            <label for="pwd">Password:</label>
-            <input type="password" className="form-control" id="pwd" />
-          </div>
-          <div className="form-group form-check">
-            <label className="form-check-label">
-              <input className="form-check-input" type="checkbox" />
-              <span>Remember me</span>
-            </label>
-          </div>
-          <button type="submit" className="btn btn-primary">Submit</button>
-        </form>
+      <div className='d-flex flex-row justify-content-center'>
+        <div className='col-2'></div>
+        <div className='col-6'>
+          <form>
+            <div className="form-group">
+              <label htmlFor="email">Email address:</label>
+              <input
+                type="email"
+                className="form-control"
+                id="email"
+                name="email"
+                value={values.email}
+                onChange={handleChange}
+              />
+            </div>
+            {/* <div className="form-group">
+              <label htmlFor="pwd">Password:</label>
+              <input type="password" className="form-control" id="pwd" />
+            </div>
+            <div className="form-group form-check">
+              <label className="form-check-label">
+                <input className="form-check-input" type="checkbox" />
+                <span>Remember me</span>
+              </label>
+            </div>
+            <button type="submit" className="btn btn-primary">Submit</button> */}
+          </form>
+        </div>
+        <div className='col-2'></div>
       </div>
-      <div className='col-4'></div>
     </div>
   );
 }
 
-export default App;
+const FormikApp = withFormik({
+  mapPropsToValues() {
+    return {
+      email: 'vigneshwaran'
+    }
+  }
+})(App);
+
+export default FormikApp;
