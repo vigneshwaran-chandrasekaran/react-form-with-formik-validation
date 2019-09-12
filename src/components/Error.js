@@ -5,7 +5,7 @@ export default function Error({ touched, message }) {
         return <div>&nbsp;</div>;
     }
     if (message) {
-        return <div className='text-danger'>{message} 😟</div>;
+        return <div className='text-danger'>{message} <span role="img" aria-label='Emoji'>😟</span></div>;
     }
-    return <div className='text-success'>all good 😃</div>;
+    return <div className='text-success'>all good <span role="img" aria-label='Emoji'>😃</span></div>;
 }
