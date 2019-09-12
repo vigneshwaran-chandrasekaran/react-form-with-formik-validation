@@ -1,0 +1,19 @@
+.container {
+    /* background-color: #ccc; */
+}
+
+.input {
+    background-color: #bababa;
+}
+
+.suggestionsContainer {
+    background-color: 'orange';
+}
+
+.suggestion {
+    background-color: 'pink';
+}
+
+.suggestionHighlighted {
+    background-color: 'yellow';
+}

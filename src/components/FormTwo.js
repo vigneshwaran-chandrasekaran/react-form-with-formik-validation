@@ -1,7 +1,11 @@
-import React from 'react';
-import { Formik, Form, Field, ErrorMessage } from 'formik';
+import React, { useState } from 'react';
+import { Formik } from 'formik';
 import * as Yup from 'yup';
+import Autosuggest from 'react-autosuggest';
+import axios from 'axios';
 import Error from './Error';
+// import '../styles/autosuggest.css';
+
 
 const validationSchema = Yup.object().shape({
     userName: Yup.string()
@@ -12,16 +16,30 @@ const validationSchema = Yup.object().shape({
         .email()
         .min(1)
         .max(15)
+        .required(),
+    country: Yup.string()
         .required()
 });
 
+// initial state (starting field values)
+const initialValues = {
+    email: 'one@g.coms',
+    userName: 'two',
+    country: ''
+};
+
 
 export default function FormTwo() {
-    // initial state (starting field values)
-    const initialValues = {
-        email: 'one@g.coms',
-        userName: 'two'
-    };
+    const [country, setCountry] = useState('');
+    const [suggestions, setSuggestions] = useState([]);
+
+
+
+    function onSuggestionsClearRequested() {
+        console.log('hi');
+        setSuggestions([]);
+    }
+
 
     return (
         <div className="container">
@@ -48,12 +66,13 @@ export default function FormTwo() {
                             handleChange,
                             handleBlur,
                             handleSubmit,
-                            isSubmitting
+                            isSubmitting,
+                            setFieldValue
                         }) => (
                                 <form onSubmit={handleSubmit}>
                                     <div className="form-group">
                                         <label htmlFor="email">Email address:</label>
-                                        <Field
+                                        <input
                                             type="email"
                                             className={"form-control " + (touched.email && errors.email ? 'border-danger' : '')}
                                             id="email"
@@ -78,6 +97,70 @@ export default function FormTwo() {
                                             onChange={handleChange}
                                         />
                                         <Error touched={touched.userName} message={errors.userName} />
+                                    </div>
+
+                                    <div className="form-group">
+                                        <label htmlFor='autosuggest'>Autosuggest</label>
+                                        <Autosuggest
+                                            inputProps={{
+                                                value: country,          // usually comes from the application state
+                                                // onBlur,         // called when the input loses focus, e.g. when user presses Tab
+                                                type: 'search',
+                                                placeholder: 'Enter city or postcode',
+                                                className: "form-control " + (touched.country && errors.country ? 'border-danger' : ''),
+                                                autoComplete: 'hello',
+                                                name: 'autosuggest',
+                                                id: 'autosuggest',
+                                                onChange: (_event, { newValue }) => {
+                                                    // called every time the input value changes
+                                                    console.log({ newValue });
+                                                    setCountry(newValue);
+                                                    console.log(country);
+                                                }
+                                            }}
+                                            suggestions={suggestions}
+                                            onSuggestionsFetchRequested={async ({ value }) => {
+                                                console.log({ value });
+                                                if (!value) {
+                                                    setSuggestions([]);
+                                                    return;
+                                                }
+
+                                                try {
+                                                    const result = await axios.get(`https://restcountries.eu/rest/v2/name/${value}`);
+                                                    console.log(result.data);
+                                                    setSuggestions(result.data.map(row => ({
+                                                        name: row.name,
+                                                        flag: row.flag
+                                                    })));
+                                                } catch (error) {
+                                                    setSuggestions([]);
+                                                }
+                                            }}
+                                            onSuggestionsClearRequested={onSuggestionsClearRequested}
+                                            getSuggestionValue={(suggestion) => {
+                                                return suggestion.name;
+                                            }}
+                                            renderSuggestion={(suggestion) => {
+                                                return <div>
+                                                    <img
+                                                        style={{ width: '25px', paddingRight: '10px' }}
+                                                        src={suggestion.flag}
+                                                        alt={suggestion.name} />
+                                                    {suggestion.name}
+                                                </div>;
+                                            }}
+                                            onSuggestionSelected={(event,
+                                                { suggestion, suggestionValue, suggestionIndex, sectionIndex, method }) => {
+                                                if (method === 'enter') {
+                                                    event.preventDefault();
+                                                }
+                                                setCountry(suggestion.name);
+                                                setFieldValue('country', suggestion.name);
+                                            }}
+                                        />
+                                        <Error touched={touched.country} message={errors.country} />
+
                                     </div>
                                     <div>
                                         <button
