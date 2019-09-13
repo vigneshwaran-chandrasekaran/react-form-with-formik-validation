@@ -4,8 +4,6 @@ import * as Yup from 'yup';
 import Autosuggest from 'react-autosuggest';
 import axios from 'axios';
 import Error from './Error';
-// import '../styles/autosuggest.css';
-
 
 const validationSchema = Yup.object().shape({
     userName: Yup.string()
