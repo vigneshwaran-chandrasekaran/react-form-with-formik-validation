@@ -1,4 +1,7 @@
 // https://github.com/jaredpalmer/formik/blob/master/examples/CustomInputs.js
+
+// in this component Fieldset concept is used to group the Field label and errormessage
+
 import React from 'react';
 import { Formik, Field, Form, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
@@ -67,6 +70,7 @@ function Options({ options }) {
 
 const CustomInputs = () => (
     <div className="container">
+        <h1 className='text-center mb-3'>Grouping fields, dynamic select options</h1>
         <div className='d-flex flex-row justify-content-center'>
             <div className='col-2'></div>
             <div className='col-8'>

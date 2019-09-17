@@ -1,6 +1,7 @@
 import React from 'react';
 import { withFormik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
+import { Debug } from './Debug';
 
 const FormOne = ({
     values,
@@ -58,6 +59,7 @@ const FormOne = ({
                         {touched.plan && errors.plan && <div className='text-danger small my-2'>{errors.plan}</div>}
                         <ErrorMessage name="plan" className="text-danger small my-2" component='div' />
                         <button disabled={isSubmitting} type="submit" className="btn btn-primary">Submit</button>
+                        <Debug />
                     </Form>
                 </div>
                 <div className='col-2'></div>
