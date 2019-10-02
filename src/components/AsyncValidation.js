@@ -6,7 +6,8 @@ import { Debug } from './Debug';
 const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
 
 const validate = (values) => {
-  return sleep(300).then(() => {
+  return sleep(300).then((res) => {
+    console.log(res);
     let errors = {};
 
     if (['admin', 'null', 'god'].includes(values.username)) {
@@ -23,30 +24,46 @@ const validate = (values) => {
   });
 };
 
+const handleOnSubmit = (values, { setSubmitting, resetForm }) => {
+  console.log('handleOnSubmit');
+  console.log({ values });
+  sleep(500).then(() => {
+    alert(JSON.stringify(values, null, 2));
+    resetForm();
+    setSubmitting(false);
+  });
+}
+
+const initialValues = {
+  username: '',
+};
+
 const Username = () => (
-  <div>
-    <h1>Pick a username</h1>
+  <>
+    <h1>AsyncValidation Pick a username</h1>
     <Formik
-      initialValues={{
-        username: '',
-      }}
+      initialValues={initialValues}
       validate={validate}
-      onSubmit={values => {
-        sleep(500).then(() => {
-          alert(JSON.stringify(values, null, 2));
-        });
-      }}
-      render={({ errors, touched }) => (
+      onSubmit={handleOnSubmit}
+      render={({ isSubmitting, handleReset, errors, touched }) => (
         <Form>
           <label htmlFor="username">Username</label>
-          <Field name="username" type="text" />
-          <ErrorMessage name="username" />
-          <button type="submit">Submit</button>
+          <Field className="form-control" name="username" type="text" />
+          <ErrorMessage className='text-danger small' component="div" name="username" />
+          <button
+            className="btn btn-primary m-2"
+            type="submit"
+            disabled={isSubmitting}>Submit</button>
+          <button
+            type="reset"
+            className="btn btn-warning m-2"
+            disabled={isSubmitting}
+            onClick={handleReset}>Reset</button>
           <Debug />
         </Form>
       )}
     />
-  </div>
+  </>
 );
 
 export default Username;

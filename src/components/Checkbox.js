@@ -5,7 +5,7 @@ import { Debug } from './Debug';
 const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
 
 const CheckboxExample = () => (
-  <div>
+  <>
     <h1>Checkboxes</h1>
     <p>
       This example demonstrates how to properly create checkboxes with Formik.
@@ -109,7 +109,7 @@ const CheckboxExample = () => (
         </Form>
       )}
     </Formik>
-  </div>
+  </>
 );
 
 export default CheckboxExample;

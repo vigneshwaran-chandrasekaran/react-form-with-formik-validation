@@ -47,95 +47,87 @@ const validationSchema = Yup.object().shape({
 });
 
 const Arrays = () => (
-    <div>
-        <h1 className='text-center mb-3'>Dyanmic Field object</h1>
-        <div className="container">
-            <div className='d-flex flex-row justify-content-center'>
-                <div className='col-2'></div>
-                <div className='col-8'>
-                    <Formik
-                        initialValues={initialValues}
-                        validationSchema={validationSchema}
-                        onSubmit={values => {
-                            setTimeout(() => {
-                                alert(JSON.stringify(values, null, 2));
-                            }, 500);
-                        }}
-                        render={({
-                            values,
-                            errors,
-                            touched,
-                            isSubmitting }) => (
-                                <Form>
-                                    <FieldArray
-                                        name="friends"
-                                        render={({ insert, remove, push }) => (
-                                            <div>
-                                                {values.friends.length > 0 &&
-                                                    values.friends.map((friend, index) => (
-                                                        <div className="d-flex align-items-center" key={index}>
-                                                            <div className="col">
-                                                                <label htmlFor={`friends.${index}.name`}>Name</label>
-                                                                <Field
-                                                                    name={`friends.${index}.name`}
-                                                                    placeholder="Jane Doe"
-                                                                    type="text"
-                                                                    className="form-control"
-                                                                />
-                                                                <ErrorMessage
-                                                                    name={`friends.${index}.name`}
-                                                                    component="div"
-                                                                    className='text-danger small'
-                                                                />
-                                                            </div>
-                                                            <div className="col">
-                                                                <label htmlFor={`friends.${index}.email`}>Email</label>
-                                                                <Field
-                                                                    name={`friends.${index}.email`}
-                                                                    placeholder="jane@acme.com"
-                                                                    type="email"
-                                                                    className="form-control"
-                                                                />
-                                                                <ErrorMessage
-                                                                    name={`friends.${index}.email`}
-                                                                    component="div"
-                                                                    className='text-danger small'
-                                                                />
-                                                            </div>
-                                                            <div className="col">
-                                                                <button
-                                                                    type="button"
-                                                                    className="btn btn-danger"
-                                                                    onClick={() => {
-                                                                        if (values.friends.length > 1) {
-                                                                            return remove(index)
-                                                                        }
-                                                                    }}
-                                                                >X</button>
-                                                            </div>
-                                                        </div>
-                                                    ))}
-                                                <button
-                                                    type="button"
-                                                    className="btn btn-warning btn-sm mt-2"
-                                                    onClick={() => push({ name: '', email: '' })}
-                                                >Add Friend</button>
+    <>
+        <h1 className='text-center mb-3'>Arrays Dyanmic Field object</h1>
+        <Formik
+            initialValues={initialValues}
+            validationSchema={validationSchema}
+            onSubmit={values => {
+                setTimeout(() => {
+                    alert(JSON.stringify(values, null, 2));
+                }, 500);
+            }}
+            render={({
+                values,
+                errors,
+                touched,
+                isSubmitting }) => (
+                    <Form>
+                        <FieldArray
+                            name="friends"
+                            render={({ insert, remove, push }) => (
+                                <div>
+                                    {values.friends.length > 0 &&
+                                        values.friends.map((friend, index) => (
+                                            <div className="d-flex align-items-center" key={index}>
+                                                <div className="col">
+                                                    <label htmlFor={`friends.${index}.name`}>Name</label>
+                                                    <Field
+                                                        name={`friends.${index}.name`}
+                                                        placeholder="Jane Doe"
+                                                        type="text"
+                                                        className="form-control"
+                                                    />
+                                                    <ErrorMessage
+                                                        name={`friends.${index}.name`}
+                                                        component="div"
+                                                        className='text-danger small'
+                                                    />
+                                                </div>
+                                                <div className="col">
+                                                    <label htmlFor={`friends.${index}.email`}>Email</label>
+                                                    <Field
+                                                        name={`friends.${index}.email`}
+                                                        placeholder="jane@acme.com"
+                                                        type="email"
+                                                        className="form-control"
+                                                    />
+                                                    <ErrorMessage
+                                                        name={`friends.${index}.email`}
+                                                        component="div"
+                                                        className='text-danger small'
+                                                    />
+                                                </div>
+                                                <div className="col">
+                                                    <button
+                                                        type="button"
+                                                        className="btn btn-danger"
+                                                        onClick={() => {
+                                                            if (values.friends.length > 1) {
+                                                                return remove(index)
+                                                            }
+                                                        }}
+                                                    >X</button>
+                                                </div>
                                             </div>
-                                        )}
-                                    />
-                                    <button type="submit" className="btn btn-primary mt-2">Invite</button>
-                                    <FriendArrayErrors errors={errors} />
-                                    {/* <p>{JSON.stringify(errors, null, 2)}</p>
-                                    <p>{JSON.stringify(values, null, 2)}</p> */}
-                                    <Debug />
-                                </Form>
+                                        ))}
+                                    <button
+                                        type="button"
+                                        className="btn btn-warning btn-sm mt-2"
+                                        onClick={() => push({ name: '', email: '' })}
+                                    >Add Friend</button>
+                                </div>
                             )}
-                    />
-                </div>
-                <div className='col-2'></div>
-            </div>
-        </div>
-    </div>
+                        />
+                        <button type="submit" className="btn btn-primary mt-2">Invite</button>
+                        <FriendArrayErrors errors={errors} />
+                        {/* <p>{JSON.stringify(errors, null, 2)}</p>
+                                    <p>{JSON.stringify(values, null, 2)}</p> */}
+                        <Debug />
+                    </Form>
+                )}
+        />
+    </>
 );
 
 export default Arrays;

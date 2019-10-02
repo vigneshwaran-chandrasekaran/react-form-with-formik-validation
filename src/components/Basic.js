@@ -3,8 +3,8 @@ import { Formik, Field, Form } from 'formik';
 import { Debug } from './Debug';
 
 const Basic = () => (
-  <div>
-    <h1>Sign Up</h1>
+  <>
+    <h1>Basic Sign Up</h1>
     <Formik
       initialValues={{
         firstName: '',
@@ -31,7 +31,7 @@ const Basic = () => (
         </Form>
       )}
     />
-  </div>
+  </>
 );
 
 export default Basic;

@@ -69,73 +69,67 @@ function Options({ options }) {
 }
 
 const CustomInputs = () => (
-    <div className="container">
+    <>
         <h1 className='text-center mb-3'>Grouping fields, dynamic select options</h1>
-        <div className='d-flex flex-row justify-content-center'>
-            <div className='col-2'></div>
-            <div className='col-8'>
-                <Formik
-                    initialValues={initialValues}
-                    validationSchema={validationSchema}
-                    onSubmit={values => onSubmitHandle(values)}
-                    render={({ isSubmitting, handleReset }) => (
-                        <Form>
-                            <Fieldset
-                                name="email"
-                                type="email"
-                                label="Email"
-                                placeholder="jane@acme.com"
-                                className="form-control"
-                            />
-                            <Fieldset
-                                name="color"
-                                className="form-control"
-                                label="Favorite Color"
-                                component="select">
-                                <option value="">Select a Color</option>
-                                <option value="red">Red</option>
-                                <option value="green">Green</option>
-                                <option value="blue">Blue</option>
-                            </Fieldset>
+        <Formik
+            initialValues={initialValues}
+            validationSchema={validationSchema}
+            onSubmit={values => onSubmitHandle(values)}
+            render={({ isSubmitting, handleReset }) => (
+                <Form>
+                    <Fieldset
+                        name="email"
+                        type="email"
+                        label="Email"
+                        placeholder="jane@acme.com"
+                        className="form-control"
+                    />
+                    <Fieldset
+                        name="color"
+                        className="form-control"
+                        label="Favorite Color"
+                        component="select">
+                        <option value="">Select a Color</option>
+                        <option value="red">Red</option>
+                        <option value="green">Green</option>
+                        <option value="blue">Blue</option>
+                    </Fieldset>
 
-                            <Fieldset
-                                name="website"
-                                type="url"
-                                label="Website"
-                                placeholder="https://example.com"
-                                className="form-control"
-                            />
+                    <Fieldset
+                        name="website"
+                        type="url"
+                        label="Website"
+                        placeholder="https://example.com"
+                        className="form-control"
+                    />
 
-                            <Fieldset
-                                name="animal"
-                                className="form-control"
-                                component="select"
-                                label="Favorite Animal">
-                                <option value="">Select an animal</option>
-                                <option value="tiger">Tiger</option>
-                                <option value="bear">Bear</option>
-                                <option value="shark">Shark</option>
-                                <Options options={animalsList} />
-                            </Fieldset>
+                    <Fieldset
+                        name="animal"
+                        className="form-control"
+                        component="select"
+                        label="Favorite Animal">
+                        <option value="">Select an animal</option>
+                        <option value="tiger">Tiger</option>
+                        <option value="bear">Bear</option>
+                        <option value="shark">Shark</option>
+                        <Options options={animalsList} />
+                    </Fieldset>
 
-                            <button
-                                type="reset"
-                                className="btn btn-warning m-2"
-                                disabled={isSubmitting}
-                                onClick={handleReset}>Reset</button>
+                    <button
+                        type="reset"
+                        className="btn btn-warning m-2"
+                        disabled={isSubmitting}
+                        onClick={handleReset}>Reset</button>
 
-                            <button
-                                type="submit"
-                                className="btn btn-primary m-2">Submit</button>
+                    <button
+                        type="submit"
+                        className="btn btn-primary m-2">Submit</button>
 
-                            <Debug />
-                        </Form>
-                    )}
-                />
-            </div>
-            <div className='col-2'></div>
-        </div>
-    </div>
+                    <Debug />
+                </Form>
+            )}
+        />
+    </>
 );
 
 export default CustomInputs;
