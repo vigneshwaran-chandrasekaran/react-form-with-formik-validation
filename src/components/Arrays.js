@@ -18,7 +18,7 @@ const initialValues = {
 
 // within a `FieldArray`'s render
 const FriendArrayErrors = ({ errors }) =>
-    typeof errors.friends === 'string' ? <div>{errors.friends}</div> : null;
+    typeof errors.friends === 'string' ? <div className='text-danger small'>{errors.friends}</div> : null;
 
 // https://github.com/jquense/yup/issues/345#issuecomment-487320558
 
