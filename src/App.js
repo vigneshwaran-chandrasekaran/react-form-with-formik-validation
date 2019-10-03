@@ -10,6 +10,9 @@ import Checkbox from './components/Checkbox';
 import CombinedValidations from './components/CombinedValidations';
 import CustomInputs from './components/CustomInputs';
 import ErrorMessage from './components/ErrorMessage';
+import FastField from './components/FastField';
+import FastFieldWebExample from './components/FastFieldWebExample';
+import FieldLevelValidation from './components/FieldLevelValidation';
 
 
 function Line() {
@@ -36,7 +39,10 @@ export default function App() {
           {/* <Checkbox /> */}
           {/* <CombinedValidations /> */}
           {/* <CustomInputs /> */}
-          <ErrorMessage />
+          {/* <ErrorMessage /> */}
+          {/* <FastField /> */}
+          {/* <FastFieldWebExample /> */}
+          <FieldLevelValidation />
         </div>
         <div className='col-2'></div>
       </div>

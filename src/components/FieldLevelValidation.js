@@ -4,9 +4,16 @@ import { Debug } from './Debug';
 
 const isRequired = message => value => (!!value ? undefined : message);
 
+/**
+ * In this example
+ * setFieldTouched = is used to programmatically touch the field
+ * setFieldValue = is used to set value to filed programmatically
+ * validateField = validate single filed based on input key value
+ */
+
 const FieldLevelValidation = () => (
   <div>
-    <h1>Pick a username</h1>
+    <h1>(FieldLevelValidation) Pick a username</h1>
     <Formik
       initialValues={{ username: '', email: '' }}
       onSubmit={values => {
@@ -20,67 +27,72 @@ const FieldLevelValidation = () => (
         validateField,
         validateForm,
       }) => (
-        <Form>
-          <label htmlFor="username">Username</label>
-          <div>
-            <Field
-              name="username"
-              validate={isRequired('This field is required')}
-              type="text"
-              placeholder="Username"
-            />
-            <ErrorMessage name="username" />
-          </div>
-          <br />
-          <div>
-            <Field
-              name="email"
-              validate={isRequired('This field is required')}
-              type="text"
-              placeholder="Email"
-            />
-            <ErrorMessage name="email" />
-          </div>
-
-          <div>
-            <div>username field actions</div>
-            <button
-              type="button"
-              onClick={() => {
-                setFieldTouched('username', true, true);
-              }}
-            >
-              setFieldTouched
-            </button>
-            <button
-              type="button"
-              onClick={() => {
-                setFieldValue('username', '', true);
-              }}
-            >
-              setFieldValue
-            </button>
-            <button
-              type="button"
-              onClick={() => {
-                validateField('username');
-              }}
-            >
-              validateField
-            </button>
+          <Form>
+            <label htmlFor="username">Username</label>
+            <div>
+              <Field
+                className="form-control"
+                name="username"
+                validate={isRequired('This field is required')}
+                type="text"
+                placeholder="Username"
+              />
+              <ErrorMessage className='text-danger small' name="username" component="div" />
+            </div>
             <br />
-          </div>
-          <br />
-          <div>
-            <div>Form actions</div>
-            <button type="button" onClick={validateForm}>
-              validate form
+            <div>
+              <Field
+                className="form-control"
+                name="email"
+                validate={isRequired('This field is required')}
+                type="text"
+                placeholder="Email"
+              />
+              <ErrorMessage className='text-danger small' name="email" component="div" />
+            </div>
+
+            <div className="mt-4">
+              <div>username field actions</div>
+              <button
+                className="btn btn-primary mr-2"
+                type="button"
+                onClick={() => {
+                  setFieldTouched('username', true, true);
+                }}
+              >
+                setFieldTouched
             </button>
-            <button type="submit">Submit</button>
-          </div>
-          <Debug />
-        </Form>
-      )}
+              <button
+                className="btn btn-primary mr-2"
+                type="button"
+                onClick={() => {
+                  setFieldValue('username', '', true);
+                }}
+              >
+                setFieldValue
+            </button>
+              <button
+                className="btn btn-primary mr-2"
+                type="button"
+                onClick={() => {
+                  validateField('username');
+                }}
+              >
+                validateField
+            </button>
+              <br />
+            </div>
+            <br />
+            <div>
+              <div>Form actions</div>
+              <button className="btn btn-primary mr-2" type="button" onClick={validateForm}>
+                validate form
+            </button>
+              <button className="btn btn-primary" type="submit">Submit</button>
+            </div>
+            <Debug />
+          </Form>
+        )}
     />
   </div>
 );
