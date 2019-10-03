@@ -23,7 +23,7 @@ const SignUpSchema = Yup.object().shape({
 
 const SignUp = () => (
   <div>
-    <h1>Sign up</h1>
+    <h3>(SchemaValidation) Sign up </h3>
     <Formik
       initialValues={{
         email: '',
@@ -39,27 +39,42 @@ const SignUp = () => (
       render={({ errors, touched }) => (
         <Form>
           <label htmlFor="firstName">First Name</label>
-          <Field name="firstName" placeholder="Jane" type="text" />
+          <Field
+            className="form-control"
+            name="firstName"
+            placeholder="Jane"
+            type="text" />
 
           <ErrorMessage
             name="firstName"
             component="div"
-            className="field-error"
+            className="text-danger small"
           />
 
           <label htmlFor="lastName">Last Name</label>
-          <Field name="lastName" placeholder="Doe" type="text" />
+          <Field
+            className="form-control"
+            name="lastName"
+            placeholder="Doe"
+            type="text" />
           <ErrorMessage
             name="lastName"
             component="div"
-            className="field-error"
+            className="text-danger small"
           />
 
           <label htmlFor="email">Email</label>
-          <Field name="email" placeholder="jane@acme.com" type="email" />
-          <ErrorMessage name="email" component="div" className="field-error" />
+          <Field
+            className="form-control"
+            name="email"
+            placeholder="jane@acme.com"
+            type="email" />
+          <ErrorMessage
+            name="email"
+            component="div"
+            className="text-danger small" />
 
-          <button type="submit">Submit</button>
+          <button className="btn btn-primary secondary mt-2" type="submit">Submit</button>
           <Debug />
         </Form>
       )}

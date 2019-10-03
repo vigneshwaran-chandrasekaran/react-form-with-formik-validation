@@ -1,19 +1,20 @@
 import React from 'react';
-import FormOne from './components/FormOne';
-import FormTwo from './components/FormTwo';
-import FormThree from './components/FormThree';
-import Arrays from './components/Arrays';
-import AsyncSubmit from './components/AsyncSubmit';
-import AsyncValidation from './components/AsyncValidation';
-import Basic from './components/Basic';
-import Checkbox from './components/Checkbox';
-import CombinedValidations from './components/CombinedValidations';
-import CustomInputs from './components/CustomInputs';
-import ErrorMessage from './components/ErrorMessage';
-import FastField from './components/FastField';
-import FastFieldWebExample from './components/FastFieldWebExample';
-import FieldLevelValidation from './components/FieldLevelValidation';
-import MultistepWizard from './components/MultistepWizard';
+// import FormOne from './components/FormOne';
+// import FormTwo from './components/FormTwo';
+// import FormThree from './components/FormThree';
+// import Arrays from './components/Arrays';
+// import AsyncSubmit from './components/AsyncSubmit';
+// import AsyncValidation from './components/AsyncValidation';
+// import Basic from './components/Basic';
+// import Checkbox from './components/Checkbox';
+// import CombinedValidations from './components/CombinedValidations';
+// import CustomInputs from './components/CustomInputs';
+// import ErrorMessage from './components/ErrorMessage';
+// import FastField from './components/FastField';
+// import FastFieldWebExample from './components/FastFieldWebExample';
+// import FieldLevelValidation from './components/FieldLevelValidation';
+// import MultistepWizard from './components/MultistepWizard';
+import SchemaValidation from './components/SchemaValidation';
 
 
 function Line() {
@@ -44,7 +45,8 @@ export default function App() {
           {/* <FastField /> */}
           {/* <FastFieldWebExample /> */}
           {/* <FieldLevelValidation /> */}
-          <MultistepWizard />
+          {/* <MultistepWizard /> */}
+          <SchemaValidation />
         </div>
         <div className='col-2'></div>
       </div>
