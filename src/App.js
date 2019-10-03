@@ -14,7 +14,8 @@ import React from 'react';
 // import FastFieldWebExample from './components/FastFieldWebExample';
 // import FieldLevelValidation from './components/FieldLevelValidation';
 // import MultistepWizard from './components/MultistepWizard';
-import SchemaValidation from './components/SchemaValidation';
+// import SchemaValidation from './components/SchemaValidation';
+import SyncValidation from './components/SyncValidation';
 
 
 function Line() {
@@ -46,7 +47,8 @@ export default function App() {
           {/* <FastFieldWebExample /> */}
           {/* <FieldLevelValidation /> */}
           {/* <MultistepWizard /> */}
-          <SchemaValidation />
+          {/* <SchemaValidation /> */}
+          <SyncValidation />
         </div>
         <div className='col-2'></div>
       </div>

@@ -29,13 +29,23 @@ const SignIn = () => (
       render={({ errors, touched }) => (
         <Form>
           <label htmlFor="email">Email</label>
-          <Field name="email" placeholder="john@acme.com" type="email" />
+          <Field
+            className="form-control"
+            name="email"
+            placeholder="john@acme.com"
+            type="email" />
           <div className="field-error">
-            <ErrorMessage name="email" />
+            <ErrorMessage
+              name="email"
+              component="div"
+              className="text-danger small" />
           </div>
           <label htmlFor="password">Password</label>
-          <Field name="password" type="password" />
-          <button type="submit">Sign In</button>
+          <Field
+            className="form-control"
+            name="password"
+            type="password" />
+          <button className="btn btn-primary secondary mt-2" type="submit">Sign In</button>
           <Debug />
         </Form>
       )}
