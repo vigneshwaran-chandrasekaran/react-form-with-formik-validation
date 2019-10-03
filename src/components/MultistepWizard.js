@@ -1,6 +1,7 @@
 import React from 'react';
 import { Formik, Field, ErrorMessage } from 'formik';
 import { Debug } from './Debug';
+import Line from './Line';
 
 /**
  * In this example
@@ -185,6 +186,7 @@ const App = () => (
         </div>
       </Wizard.Page>
     </Wizard>
+    <Line />
   </div>
 );
 

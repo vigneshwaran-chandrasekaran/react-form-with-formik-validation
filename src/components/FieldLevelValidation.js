@@ -1,6 +1,7 @@
 import React from 'react';
 import { Formik, Field, Form, ErrorMessage } from 'formik';
 import { Debug } from './Debug';
+import Line from './Line';
 
 const isRequired = message => value => (!!value ? undefined : message);
 

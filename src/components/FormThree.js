@@ -1,10 +1,10 @@
 import React from 'react'
-import { Formik, Field, Form, FieldArray, ErrorMessage } from 'formik';
-import * as Yup from 'yup';
+import { Formik, Field, Form, ErrorMessage } from 'formik';
+import Line from './Line';
 
 const FormThree = () => (
-    <div>
-        <h3>Any place in your app!</h3>
+    <>
+        <h3>(FormThree) Any place in your app!</h3>
         <Formik
             initialValues={{ email: '', password: '' }}
             validate={values => {
@@ -30,17 +30,26 @@ const FormThree = () => (
         >
             {({ isSubmitting }) => (
                 <Form>
-                    <Field type="email" name="email" />
-                    <ErrorMessage name="email" component="div" />
-                    <Field type="password" name="password" />
-                    <ErrorMessage name="password" component="div" />
-                    <button type="submit" disabled={isSubmitting}>
+                    <Field
+                        className="form-control mb-2"
+                        type="email"
+                        name="email"
+                        placeholder="email" />
+                    <ErrorMessage className='text-danger small' name="email" component="div" />
+                    <Field
+                        className="form-control mb-2"
+                        type="password"
+                        name="password"
+                        placeholder="password" />
+                    <ErrorMessage className='text-danger small' name="password" component="div" />
+                    <button className="btn btn-primary m-2" type="submit" disabled={isSubmitting}>
                         Submit
                     </button>
                 </Form>
             )}
         </Formik>
-    </div>
+        <Line />
+    </>
 );
 
 export default FormThree;

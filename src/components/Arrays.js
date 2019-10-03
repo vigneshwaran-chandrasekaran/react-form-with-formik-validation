@@ -6,6 +6,7 @@ import React from 'react';
 import { Formik, Field, Form, ErrorMessage, FieldArray } from 'formik';
 import * as Yup from 'yup';
 import { Debug } from './Debug';
+import Line from './Line';
 
 const initialValues = {
     friends: [
@@ -127,6 +128,7 @@ const Arrays = () => (
                     </Form>
                 )}
         />
+        <Line />
     </>
 );
 

@@ -1,6 +1,7 @@
 import React from 'react';
 import { Formik, Field, FastField, Form } from 'formik';
 import * as Yup from 'yup';
+import Line from './Line';
 
 class Input extends React.Component {
     renders = 0;
@@ -15,7 +16,7 @@ class Input extends React.Component {
 }
 
 const Basic = () => (
-    <div>
+    <>
         <h3>(FastFieldWebExample) Sign Up</h3>
         <Formik
             initialValues={{
@@ -119,7 +120,8 @@ const Basic = () => (
                 </Form>
             )}
         />
-    </div>
+        <Line />
+    </>
 );
 
 export default Basic;

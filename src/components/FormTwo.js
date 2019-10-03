@@ -4,6 +4,7 @@ import * as Yup from 'yup';
 import Autosuggest from 'react-autosuggest';
 import axios from 'axios';
 import Error from './Error';
+import Line from './Line';
 
 const validationSchema = Yup.object().shape({
     userName: Yup.string()
@@ -37,6 +38,7 @@ export default function FormTwo() {
 
     return (
         <>
+            <h3>(FormOne)</h3>
             <Formik
                 initialValues={initialValues}
                 validationSchema={validationSchema}
@@ -165,6 +167,7 @@ export default function FormTwo() {
                         </form>
                     )}
             </Formik>
+            <Line />
         </>
     )
 }

@@ -1,6 +1,7 @@
 import React from 'react';
 import { Formik, Field, Form } from 'formik';
 import { Debug } from './Debug';
+import Line from './Line';
 
 const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
 
@@ -35,6 +36,7 @@ const AsyncSubmit = () => (
         </Form>
       )}
     </Formik>
+    <Line />
   </>
 );
 

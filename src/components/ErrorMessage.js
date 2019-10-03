@@ -2,6 +2,7 @@ import React from 'react';
 import { Formik, Field, Form, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import { Debug } from './Debug';
+import Line from './Line';
 
 // While you can use any validation library (or write you own), Formik
 // comes with special support for Yup by @jquense. It has a builder API like
@@ -23,7 +24,7 @@ const SignUpSchema = Yup.object().shape({
 
 // <ErrorMessage /> will ONLY render when a field has an error and has been touched.
 const SignUp = () => (
-  <div>
+  <>
     <h3>(ErrorMessage) Sign up</h3>
     <Formik
       initialValues={{
@@ -70,7 +71,8 @@ const SignUp = () => (
         </Form>
       )}
     />
-  </div>
+    <Line />
+  </>
 );
 
 export default SignUp;

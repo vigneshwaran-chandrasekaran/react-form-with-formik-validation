@@ -1,6 +1,7 @@
 import React from 'react';
 import { Formik, Field, Form, ErrorMessage } from 'formik';
 import { Debug } from './Debug';
+import Line from './Line';
 
 const validate = values => {
   let errors = {};
@@ -13,8 +14,8 @@ const validate = values => {
 };
 
 const SignIn = () => (
-  <div>
-    <h1>Sign In</h1>
+  <>
+    <h1>(SyncValidation) Sign In</h1>
     <Formik
       initialValues={{
         email: '',
@@ -50,7 +51,8 @@ const SignIn = () => (
         </Form>
       )}
     />
-  </div>
+    <Line />
+  </>
 );
 
 export default SignIn;

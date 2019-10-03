@@ -1,6 +1,7 @@
 import React from 'react';
 import { Formik, Field, Form, ErrorMessage } from 'formik';
 import { Debug } from './Debug';
+import Line from './Line';
 
 // Async Validation
 const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
@@ -63,6 +64,7 @@ const Username = () => (
         </Form>
       )}
     />
+    <Line />
   </>
 );
 

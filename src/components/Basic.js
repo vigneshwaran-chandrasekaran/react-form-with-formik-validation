@@ -1,6 +1,7 @@
 import React from 'react';
 import { Formik, Field, Form } from 'formik';
 import { Debug } from './Debug';
+import Line from './Line';
 
 const initialValues = {
   firstName: '',
@@ -33,6 +34,7 @@ const Basic = () => (
         </Form>
       )}
     />
+    <Line />
   </>
 );
 

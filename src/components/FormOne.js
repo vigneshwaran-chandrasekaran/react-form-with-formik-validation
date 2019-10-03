@@ -2,6 +2,7 @@ import React from 'react';
 import { withFormik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import { Debug } from './Debug';
+import Line from './Line';
 
 const FormOne = ({
     values,
@@ -11,6 +12,7 @@ const FormOne = ({
 }) => {
     return (
         <>
+            <h3>(FormOne)</h3>
             <Form>
                 <div className="form-group">
                     <label htmlFor="email">Email address:</label>
@@ -58,6 +60,7 @@ const FormOne = ({
                 <button disabled={isSubmitting} type="submit" className="btn btn-primary">Submit</button>
                 <Debug />
             </Form>
+            <Line />
         </>
     );
 }
