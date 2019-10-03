@@ -1,14 +1,16 @@
 import React from 'react';
 import FormOne from './components/FormOne';
 import FormTwo from './components/FormTwo';
-// import FormThree from './components/FormThree';
-// import CustomInputs from './components/CustomInputs';
+import FormThree from './components/FormThree';
 import Arrays from './components/Arrays';
 import AsyncSubmit from './components/AsyncSubmit';
 import AsyncValidation from './components/AsyncValidation';
 import Basic from './components/Basic';
 import Checkbox from './components/Checkbox';
 import CombinedValidations from './components/CombinedValidations';
+import CustomInputs from './components/CustomInputs';
+import ErrorMessage from './components/ErrorMessage';
+
 
 function Line() {
   return (<hr />);
@@ -25,7 +27,6 @@ export default function App() {
           {/* <FormTwo /> */}
           {/* <Line /> */}
           {/* <FormThree /> */}
-          {/* <CustomInputs />*/}
           {/* <Line /> */}
           {/* <Arrays /> */}
           {/* <Line /> */}
@@ -33,7 +34,9 @@ export default function App() {
           {/* <AsyncValidation /> */}
           {/* <Basic /> */}
           {/* <Checkbox /> */}
-          <CombinedValidations />
+          {/* <CombinedValidations /> */}
+          {/* <CustomInputs /> */}
+          <ErrorMessage />
         </div>
         <div className='col-2'></div>
       </div>

@@ -13,9 +13,8 @@ const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
 const validate = (values) =>
   console.log({ values });
 sleep(300).then(() => {
-  throw {
-    zip: 'This field is required',
-  };
+  let errorMessage = { zip: 'This field is required' };
+  throw errorMessage;
 });
 
 const isRequired = message => value => (!!value ? undefined : message);
