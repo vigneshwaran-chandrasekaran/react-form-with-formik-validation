@@ -6,6 +6,8 @@ import FormTwo from './components/FormTwo';
 import Arrays from './components/Arrays';
 import AsyncSubmit from './components/AsyncSubmit';
 import AsyncValidation from './components/AsyncValidation';
+import Basic from './components/Basic';
+import Checkbox from './components/Checkbox';
 
 function Line() {
   return (<hr />);
@@ -27,7 +29,9 @@ export default function App() {
           {/* <Arrays /> */}
           {/* <Line /> */}
           {/* <AsyncSubmit /> */}
-          <AsyncValidation />
+          {/* <AsyncValidation /> */}
+          {/* <Basic /> */}
+          <Checkbox />
         </div>
         <div className='col-2'></div>
       </div>
