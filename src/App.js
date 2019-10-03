@@ -8,6 +8,7 @@ import AsyncSubmit from './components/AsyncSubmit';
 import AsyncValidation from './components/AsyncValidation';
 import Basic from './components/Basic';
 import Checkbox from './components/Checkbox';
+import CombinedValidations from './components/CombinedValidations';
 
 function Line() {
   return (<hr />);
@@ -31,7 +32,8 @@ export default function App() {
           {/* <AsyncSubmit /> */}
           {/* <AsyncValidation /> */}
           {/* <Basic /> */}
-          <Checkbox />
+          {/* <Checkbox /> */}
+          <CombinedValidations />
         </div>
         <div className='col-2'></div>
       </div>
