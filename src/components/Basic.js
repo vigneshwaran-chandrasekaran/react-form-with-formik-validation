@@ -10,7 +10,7 @@ const initialValues = {
 
 const Basic = () => (
   <>
-    <h1>Basic Sign Up</h1>
+    <h3>Basic Sign Up</h3>
     <Formik
       initialValues={initialValues}
       onSubmit={values => {

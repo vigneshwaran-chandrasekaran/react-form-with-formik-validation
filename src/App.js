@@ -13,6 +13,7 @@ import ErrorMessage from './components/ErrorMessage';
 import FastField from './components/FastField';
 import FastFieldWebExample from './components/FastFieldWebExample';
 import FieldLevelValidation from './components/FieldLevelValidation';
+import MultistepWizard from './components/MultistepWizard';
 
 
 function Line() {
@@ -42,7 +43,8 @@ export default function App() {
           {/* <ErrorMessage /> */}
           {/* <FastField /> */}
           {/* <FastFieldWebExample /> */}
-          <FieldLevelValidation />
+          {/* <FieldLevelValidation /> */}
+          <MultistepWizard />
         </div>
         <div className='col-2'></div>
       </div>

@@ -28,7 +28,7 @@ class Input extends React.Component {
 
 const Basic = () => (
   <div>
-    <h1>(FastField) Sign Up</h1>
+    <h3>(FastField) Sign Up</h3>
     <Formik
       initialValues={{
         firstName: '',

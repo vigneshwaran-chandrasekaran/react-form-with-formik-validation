@@ -4,7 +4,7 @@ import * as Yup from 'yup';
 
 const FormThree = () => (
     <div>
-        <h1>Any place in your app!</h1>
+        <h3>Any place in your app!</h3>
         <Formik
             initialValues={{ email: '', password: '' }}
             validate={values => {

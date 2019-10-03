@@ -40,7 +40,7 @@ const initialValues = {
 
 const Username = () => (
   <>
-    <h1>AsyncValidation Pick a username</h1>
+    <h3>AsyncValidation Pick a username</h3>
     <Formik
       initialValues={initialValues}
       validate={validate}

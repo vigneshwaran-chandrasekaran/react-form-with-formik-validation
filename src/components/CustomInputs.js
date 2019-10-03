@@ -70,7 +70,7 @@ function Options({ options }) {
 
 const CustomInputs = () => (
     <>
-        <h1 className='text-center mb-3'>Grouping fields, dynamic select options</h1>
+        <h3 className='text-center mb-3'>Grouping fields, dynamic select options</h3>
         <Formik
             initialValues={initialValues}
             validationSchema={validationSchema}

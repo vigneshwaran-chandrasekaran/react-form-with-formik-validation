@@ -6,7 +6,7 @@ const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
 
 const AsyncSubmit = () => (
   <>
-    <h1>AsyncSubmit Sign Up</h1>
+    <h3>AsyncSubmit Sign Up</h3>
     <Formik
       initialValues={{
         firstName: '',

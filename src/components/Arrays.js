@@ -48,7 +48,7 @@ const validationSchema = Yup.object().shape({
 
 const Arrays = () => (
     <>
-        <h1 className='text-center mb-3'>Arrays Dyanmic Field object</h1>
+        <h3 className='text-center mb-3'>Arrays Dyanmic Field object</h3>
         <Formik
             initialValues={initialValues}
             validationSchema={validationSchema}

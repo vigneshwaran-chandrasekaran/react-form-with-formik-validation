@@ -13,7 +13,7 @@ const isRequired = message => value => (!!value ? undefined : message);
 
 const FieldLevelValidation = () => (
   <div>
-    <h1>(FieldLevelValidation) Pick a username</h1>
+    <h3>(FieldLevelValidation) Pick a username</h3>
     <Formik
       initialValues={{ username: '', email: '' }}
       onSubmit={values => {

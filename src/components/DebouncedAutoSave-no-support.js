@@ -49,12 +49,12 @@ const AutoSavingForm = () => (
       }}
       render={() => (
         <Form>
-          <h1>
+          <h3>
             AutoSavingForm{' '}
             <small style={{ color: 'gray', fontSize: 11 }}>
               <AutoSave debounceMs={300} />
             </small>
-          </h1>
+          </h3>
 
           <label htmlFor="firstName">First Name</label>
           <Field name="firstName" placeholder="Jane" />

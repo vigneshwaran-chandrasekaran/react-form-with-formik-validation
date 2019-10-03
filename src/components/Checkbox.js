@@ -6,7 +6,7 @@ const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
 
 const CheckboxExample = () => (
   <>
-    <h1>Checkboxes</h1>
+    <h3>Checkboxes</h3>
     <p>
       This example demonstrates how to properly create checkboxes with Formik.
     </p>
