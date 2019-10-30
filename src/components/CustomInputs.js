@@ -11,13 +11,11 @@ import Line from './Line';
 // By combining a vanilla <label> plus Formik's <Field> and <ErrorMessage>,
 // we can abstract a generic "Fieldset" component for most of our inputs.
 const Fieldset = ({ name, label, ...rest }) => (
-    <React.Fragment>
-        <div className="form-group">
-            <label htmlFor={name}>{label}</label>
-            <Field id={name} name={name} {...rest} />
-            <ErrorMessage name={name} className='text-danger small' component='div' />
-        </div>
-    </React.Fragment>
+    <div className="form-group">
+        <label htmlFor={name}>{label}</label>
+        <Field id={name} name={name} {...rest} />
+        <ErrorMessage name={name} className='text-danger small' component='div' />
+    </div>
 );
 
 const initialValues = {
@@ -39,6 +37,8 @@ const validationSchema = Yup.object().shape({
 });
 
 function onSubmitHandle(values) {
+    console.log('onSubmitHandle');
+    console.log({ values });
     setTimeout(() => {
         alert(JSON.stringify(values, null, 2));
     }, 500);
@@ -71,11 +71,11 @@ function Options({ options }) {
 
 const CustomInputs = () => (
     <>
-        <h3 className='text-center mb-3'>Grouping fields, dynamic select options</h3>
+        <h3 className='text-center mb-3'>(CustomInputs) Grouping fields, dynamic select options</h3>
         <Formik
             initialValues={initialValues}
             validationSchema={validationSchema}
-            onSubmit={values => onSubmitHandle(values)}
+            onSubmit={onSubmitHandle}
             render={({ isSubmitting, handleReset }) => (
                 <Form>
                     <Fieldset

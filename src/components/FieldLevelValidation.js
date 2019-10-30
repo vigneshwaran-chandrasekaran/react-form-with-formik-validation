@@ -13,7 +13,7 @@ const isRequired = message => value => (!!value ? undefined : message);
  */
 
 const FieldLevelValidation = () => (
-  <div>
+  <>
     <h3>(FieldLevelValidation) Pick a username</h3>
     <Formik
       initialValues={{ username: '', email: '' }}
@@ -95,7 +95,8 @@ const FieldLevelValidation = () => (
           </Form>
         )}
     />
-  </div>
+    <Line />
+  </>
 );
 
 export default FieldLevelValidation;
