@@ -1,13 +1,13 @@
-import React from 'react';
-import { Formik, Field, Form } from 'formik';
-import { Debug } from './Debug';
-import Line from './Line';
+import React from "react";
+import { Formik, Field, Form } from "formik";
+import { Debug } from "./Debug";
+import Line from "./Line";
 
 const initialValues = {
-  firstName: '',
-  lastName: '',
-  email: 'a',
-}
+  firstName: "",
+  lastName: "",
+  email: "a"
+};
 
 const Basic = () => (
   <>
@@ -19,7 +19,8 @@ const Basic = () => (
           alert(JSON.stringify(values, null, 2));
         }, 500);
       }}
-      render={() => (
+    >
+      {() => (
         <Form>
           <label htmlFor="firstName">First Name</label>
           <Field className="form-control" name="firstName" placeholder="Jane" />
@@ -28,12 +29,19 @@ const Basic = () => (
           <Field className="form-control" name="lastName" placeholder="Doe" />
 
           <label htmlFor="email">Email</label>
-          <Field className="form-control" name="email" placeholder="jane@acme.com" type="email" />
-          <button className="btn btn-primary mt-2" type="submit">Submit</button>
+          <Field
+            className="form-control"
+            name="email"
+            placeholder="jane@acme.com"
+            type="email"
+          />
+          <button className="btn btn-primary mt-2" type="submit">
+            Submit
+          </button>
           <Debug />
         </Form>
       )}
-    />
+    </Formik>
     <Line />
   </>
 );
