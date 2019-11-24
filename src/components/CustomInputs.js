@@ -87,7 +87,7 @@ const CustomInputs = () => (
       {({ isSubmitting, handleReset }) => (
         <Form>
           <Fieldset
-            name="email"
+            name="email1"
             type="email"
             label="Email"
             placeholder="jane@acme.com"

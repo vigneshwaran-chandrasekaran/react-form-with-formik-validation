@@ -64,7 +64,7 @@ const FieldLevelValidation = () => (
           <div>
             <Field
               className="form-control"
-              name="email"
+              name="email2"
               validate={isRequired("This field is required")}
               type="text"
               placeholder="email"

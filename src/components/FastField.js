@@ -72,7 +72,7 @@ const Basic = () => (
           <label htmlFor="email">Email</label>
           <FastField
             className="form-control"
-            name="email"
+            name="email3"
             placeholder="jane@acme.com"
             type="email"
             component={Input}
