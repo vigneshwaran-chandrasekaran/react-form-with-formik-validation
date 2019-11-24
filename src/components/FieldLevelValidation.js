@@ -1,7 +1,7 @@
-import React from 'react';
-import { Formik, Field, Form, ErrorMessage } from 'formik';
-import { Debug } from './Debug';
-import Line from './Line';
+import React from "react";
+import { Formik, Field, Form, ErrorMessage } from "formik";
+import { Debug } from "./Debug";
+import Line from "./Line";
 
 const isRequired = message => value => (!!value ? undefined : message);
 
@@ -16,85 +16,100 @@ const FieldLevelValidation = () => (
   <>
     <h3>(FieldLevelValidation) Pick a username</h3>
     <Formik
-      initialValues={{ username: '', email: '' }}
+      initialValues={{ username: "", email: "" }}
       onSubmit={values => {
         alert(JSON.stringify(values, null, 2));
       }}
-      render={({
+    >
+      {({
         errors,
         touched,
         setFieldValue,
         setFieldTouched,
         validateField,
-        validateForm,
+        validateForm
       }) => (
-          <Form>
-            <label htmlFor="username">Username</label>
-            <div>
-              <Field
-                className="form-control"
-                name="username"
-                validate={isRequired('This field is required')}
-                type="text"
-                placeholder="Username"
-              />
-              <ErrorMessage className='text-danger small' name="username" component="div" />
-            </div>
-            <br />
-            <div>
-              <Field
-                className="form-control"
-                name="email"
-                validate={isRequired('This field is required')}
-                type="text"
-                placeholder="Email"
-              />
-              <ErrorMessage className='text-danger small' name="email" component="div" />
-            </div>
+        <Form>
+          <label htmlFor="username">Username</label>
+          <div>
+            <Field
+              className="form-control"
+              name="username"
+              validate={isRequired("This field is required")}
+              type="text"
+              placeholder="Username"
+            />
+            <ErrorMessage
+              className="text-danger small"
+              name="username"
+              component="div"
+            />
+          </div>
+          <br />
+          <div>
+            <Field
+              className="form-control"
+              name="email"
+              validate={isRequired("This field is required")}
+              type="text"
+              placeholder="Email"
+            />
+            <ErrorMessage
+              className="text-danger small"
+              name="email"
+              component="div"
+            />
+          </div>
 
-            <div className="mt-4">
-              <div>username field actions</div>
-              <button
-                className="btn btn-primary mr-2"
-                type="button"
-                onClick={() => {
-                  setFieldTouched('username', true, true);
-                }}
-              >
-                setFieldTouched
+          <div className="mt-4">
+            <div>username field actions</div>
+            <button
+              className="btn btn-primary mr-2"
+              type="button"
+              onClick={() => {
+                setFieldTouched("username", true, true);
+              }}
+            >
+              setFieldTouched
             </button>
-              <button
-                className="btn btn-primary mr-2"
-                type="button"
-                onClick={() => {
-                  setFieldValue('username', '', true);
-                }}
-              >
-                setFieldValue
+            <button
+              className="btn btn-primary mr-2"
+              type="button"
+              onClick={() => {
+                setFieldValue("username", "", true);
+              }}
+            >
+              setFieldValue
             </button>
-              <button
-                className="btn btn-primary mr-2"
-                type="button"
-                onClick={() => {
-                  validateField('username');
-                }}
-              >
-                validateField
+            <button
+              className="btn btn-primary mr-2"
+              type="button"
+              onClick={() => {
+                validateField("username");
+              }}
+            >
+              validateField
             </button>
-              <br />
-            </div>
             <br />
-            <div>
-              <div>Form actions</div>
-              <button className="btn btn-primary mr-2" type="button" onClick={validateForm}>
-                validate form
+          </div>
+          <br />
+          <div>
+            <div>Form actions</div>
+            <button
+              className="btn btn-primary mr-2"
+              type="button"
+              onClick={validateForm}
+            >
+              validate form
             </button>
-              <button className="btn btn-primary" type="submit">Submit</button>
-            </div>
-            <Debug />
-          </Form>
-        )}
-    />
+            <button className="btn btn-primary" type="submit">
+              Submit
+            </button>
+          </div>
+          <Debug />
+        </Form>
+      )}
+    </Formik>
     <Line />
   </>
 );
