@@ -1,7 +1,7 @@
-import React from 'react';
-import { Formik, Field, ErrorMessage } from 'formik';
-import { Debug } from './Debug';
-import Line from './Line';
+import React from "react";
+import { Formik, Field, ErrorMessage } from "formik";
+import { Debug } from "./Debug";
+import Line from "./Line";
 
 /**
  * In this example
@@ -11,7 +11,7 @@ import Line from './Line';
 
 const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
 
-const required = value => (value ? undefined : 'Required');
+const required = value => (value ? undefined : "Required");
 
 class Wizard extends React.Component {
   static Page = ({ children }) => children;
@@ -20,19 +20,19 @@ class Wizard extends React.Component {
     super(props);
     this.state = {
       page: 0,
-      values: props.initialValues,
+      values: props.initialValues
     };
   }
 
   next = values =>
     this.setState(state => ({
       page: Math.min(state.page + 1, this.props.children.length - 1),
-      values,
+      values
     }));
 
   previous = () =>
     this.setState(state => ({
-      page: Math.max(state.page - 1, 0),
+      page: Math.max(state.page - 1, 0)
     }));
 
   validate = values => {
@@ -66,7 +66,8 @@ class Wizard extends React.Component {
         enableReinitialize={false}
         validate={this.validate}
         onSubmit={this.handleSubmit}
-        render={({ values, handleSubmit, isSubmitting, handleReset }) => (
+      >
+        {({ values, handleSubmit, isSubmitting, handleReset }) => (
           <form onSubmit={handleSubmit}>
             {activePage}
             <div className="buttons">
@@ -80,9 +81,17 @@ class Wizard extends React.Component {
                 </button>
               )}
 
-              {!isLastPage && <button type="submit" className="btn btn-primary mt-2">Next »</button>}
+              {!isLastPage && (
+                <button type="submit" className="btn btn-primary mt-2">
+                  Next »
+                </button>
+              )}
               {isLastPage && (
-                <button className="btn btn-success ml-2 mt-2" type="submit" disabled={isSubmitting}>
+                <button
+                  className="btn btn-success ml-2 mt-2"
+                  type="submit"
+                  disabled={isSubmitting}
+                >
                   Submit
                 </button>
               )}
@@ -91,7 +100,7 @@ class Wizard extends React.Component {
             <Debug />
           </form>
         )}
-      />
+      </Formik>
     );
   }
 }
@@ -101,10 +110,10 @@ const App = () => (
     <h3>(MultistepWizard) Multistep / Form Wizard </h3>
     <Wizard
       initialValues={{
-        firstName: '',
-        lastName: '',
-        email: '',
-        favoriteColor: '',
+        firstName: "",
+        lastName: "",
+        email: "",
+        favoriteColor: ""
       }}
       onSubmit={(values, actions) => {
         sleep(300).then(() => {
@@ -151,10 +160,10 @@ const App = () => (
         validate={values => {
           const errors = {};
           if (!values.email) {
-            errors.email = 'Required';
+            errors.email = "Required";
           }
           if (!values.favoriteColor) {
-            errors.favoriteColor = 'Required';
+            errors.favoriteColor = "Required";
           }
           return errors;
         }}
@@ -168,11 +177,19 @@ const App = () => (
             type="email"
             placeholder="Email"
           />
-          <ErrorMessage name="email" component="div" className="text-danger small" />
+          <ErrorMessage
+            name="email"
+            component="div"
+            className="text-danger small"
+          />
         </div>
         <div>
           <label>Favorite Color</label>
-          <Field name="favoriteColor" component="select" className="form-control">
+          <Field
+            name="favoriteColor"
+            component="select"
+            className="form-control"
+          >
             <option value="">Select a Color</option>
             <option value="#ff0000">❤️ Red</option>
             <option value="#00ff00">💚 Green</option>
