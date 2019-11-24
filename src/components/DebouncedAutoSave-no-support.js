@@ -1,7 +1,7 @@
-import React from 'react';
-import { useFormikContext, Formik, Field, Form } from 'formik';
-import { Debug } from './Debug';
-import debounce from 'just-debounce-it';
+import React from "react";
+import { useFormikContext, Formik, Field, Form } from "formik";
+import { Debug } from "./Debug";
+import debounce from "just-debounce-it";
 
 const AutoSave = ({ debounceMs }) => {
   const formik = useFormikContext();
@@ -22,10 +22,10 @@ const AutoSave = ({ debounceMs }) => {
   return (
     <>
       {!!formik.isSubmitting
-        ? 'saving...'
+        ? "saving..."
         : lastSaved !== null
-          ? `Last Saved: ${lastSaved}`
-          : null}
+        ? `Last Saved: ${lastSaved}`
+        : null}
     </>
   );
 };
@@ -34,24 +34,25 @@ const AutoSavingForm = () => (
   <div>
     <Formik
       initialValues={{
-        firstName: '',
-        lastName: '',
-        email: '',
+        firstName: "",
+        lastName: "",
+        email: ""
       }}
       onSubmit={(values, { setSubmitting }) => {
         return new Promise(resolve =>
           setTimeout(() => {
-            console.log('submitted', JSON.stringify(values, null, 2));
+            console.log("submitted", JSON.stringify(values, null, 2));
             setSubmitting(false);
             resolve();
           }, 1000)
         );
       }}
-      render={() => (
+    >
+      {() => (
         <Form>
           <h3>
-            AutoSavingForm{' '}
-            <small style={{ color: 'gray', fontSize: 11 }}>
+            AutoSavingForm{" "}
+            <small style={{ color: "gray", fontSize: 11 }}>
               <AutoSave debounceMs={300} />
             </small>
           </h3>
@@ -69,7 +70,7 @@ const AutoSavingForm = () => (
           <Debug />
         </Form>
       )}
-    />
+    </Formik>
   </div>
 );
 
