@@ -1,8 +1,8 @@
-import React from 'react';
-import { Formik, Field, Form, ErrorMessage } from 'formik';
-import * as Yup from 'yup';
-import { Debug } from './Debug';
-import Line from './Line';
+import React from "react";
+import { Formik, Field, Form, ErrorMessage } from "formik";
+import * as Yup from "yup";
+import { Debug } from "./Debug";
+import Line from "./Line";
 
 // While you can use any validation library (or write you own), Formik
 // comes with special support for Yup by @jquense. It has a builder API like
@@ -10,16 +10,16 @@ import Line from './Line';
 // to keep them separate so you can reuse schemas (e.g. address) across your application.
 const SignUpSchema = Yup.object().shape({
   email: Yup.string()
-    .email('Invalid email address')
-    .required('Required'),
+    .email("Invalid email address")
+    .required("Required"),
   firstName: Yup.string()
-    .min(2, 'Must be longer than 2 characters')
-    .max(20, 'Nice try, nobody has a first name that long')
-    .required('Required'),
+    .min(2, "Must be longer than 2 characters")
+    .max(20, "Nice try, nobody has a first name that long")
+    .required("Required"),
   lastName: Yup.string()
-    .min(2, 'Must be longer than 2 characters')
-    .max(20, 'Nice try, nobody has a last name that long')
-    .required('Required'),
+    .min(2, "Must be longer than 2 characters")
+    .max(20, "Nice try, nobody has a last name that long")
+    .required("Required")
 });
 
 const SignUp = () => (
@@ -27,9 +27,9 @@ const SignUp = () => (
     <h3>(SchemaValidation) Sign up </h3>
     <Formik
       initialValues={{
-        email: '',
-        firstName: '',
-        lastName: '',
+        email: "",
+        firstName: "",
+        lastName: ""
       }}
       validationSchema={SignUpSchema}
       onSubmit={values => {
@@ -37,14 +37,16 @@ const SignUp = () => (
           alert(JSON.stringify(values, null, 2));
         }, 500);
       }}
-      render={({ errors, touched }) => (
+    >
+      {() => (
         <Form>
           <label htmlFor="firstName">First Name</label>
           <Field
             className="form-control"
             name="firstName"
             placeholder="Jane"
-            type="text" />
+            type="text"
+          />
 
           <ErrorMessage
             name="firstName"
@@ -57,7 +59,8 @@ const SignUp = () => (
             className="form-control"
             name="lastName"
             placeholder="Doe"
-            type="text" />
+            type="text"
+          />
           <ErrorMessage
             name="lastName"
             component="div"
@@ -69,17 +72,21 @@ const SignUp = () => (
             className="form-control"
             name="email"
             placeholder="jane@acme.com"
-            type="email" />
+            type="email"
+          />
           <ErrorMessage
             name="email"
             component="div"
-            className="text-danger small" />
+            className="text-danger small"
+          />
 
-          <button className="btn btn-primary secondary mt-2" type="submit">Submit</button>
+          <button className="btn btn-primary secondary mt-2" type="submit">
+            Submit
+          </button>
           <Debug />
         </Form>
       )}
-    />
+    </Formik>
     <Line />
   </>
 );
