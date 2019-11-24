@@ -1,7 +1,7 @@
-import React from 'react';
-import { Formik, FastField, Field, Form } from 'formik';
-import { Debug } from './Debug';
-import Line from './Line';
+import React from "react";
+import { Formik, FastField, Field, Form } from "formik";
+import { Debug } from "./Debug";
+import Line from "./Line";
 
 class Input extends React.Component {
   renders = 0;
@@ -32,10 +32,10 @@ const Basic = () => (
     <h3>(FastField) Sign Up</h3>
     <Formik
       initialValues={{
-        firstName: '',
-        lastName: '',
-        email: '',
-        field: '',
+        firstName: "",
+        lastName: "",
+        email: "",
+        field: ""
       }}
       onSubmit={(values, { setSubmitting }) => {
         setTimeout(() => {
@@ -44,7 +44,8 @@ const Basic = () => (
           alert(JSON.stringify(values, null, 2));
         }, 500);
       }}
-      render={({ isSubmitting }) => (
+    >
+      {({ isSubmitting }) => (
         <Form>
           <label htmlFor="firstName">First Name</label>
           <FastField
@@ -81,13 +82,21 @@ const Basic = () => (
           />
 
           <label htmlFor="field">First Name</label>
-          <Field className="form-control" name="field" placeholder="field" type="text" disabled={isSubmitting} />
+          <Field
+            className="form-control"
+            name="field"
+            placeholder="field"
+            type="text"
+            disabled={isSubmitting}
+          />
 
-          <button className="btn btn-primary m-2" type="submit">Submit</button>
+          <button className="btn btn-primary m-2" type="submit">
+            Submit
+          </button>
           <Debug />
         </Form>
       )}
-    />
+    </Formik>
     <Line />
   </>
 );
