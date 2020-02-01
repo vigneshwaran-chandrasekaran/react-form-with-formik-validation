@@ -1,0 +1,9 @@
+What is Formik?
+
+we can use formik in react and react native.
+
+Formik helps with the three most annoying parts in forms.
+
+1. Getting values in and out of form state
+2. Validation and error messages
+3. Handling form submission
