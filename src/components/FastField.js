@@ -52,9 +52,7 @@ const Basic = () => (
             className="form-control"
             name="firstName"
             placeholder="Jane"
-            component={Input}
-            // as={Input}
-            // as is 2.0 > version feature so use component
+            as={Input}
             disabled={isSubmitting}
           />
 
@@ -63,9 +61,7 @@ const Basic = () => (
             className="form-control"
             name="lastName"
             placeholder="Doe"
-            component={Input}
-            // as={Input}
-            // as is 2.0 > version feature so use component
+            as={Input}
             disabled={isSubmitting}
           />
 
@@ -76,8 +72,7 @@ const Basic = () => (
             placeholder="jane@acme.com"
             type="email"
             component={Input}
-            // as={Input}
-            // as is 2.0 > version feature so use component
+            as={Input}
             disabled={isSubmitting}
           />
 
