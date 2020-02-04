@@ -71,7 +71,6 @@ const Basic = () => (
             name="email3"
             placeholder="jane@acme.com"
             type="email"
-            component={Input}
             as={Input}
             disabled={isSubmitting}
           />
