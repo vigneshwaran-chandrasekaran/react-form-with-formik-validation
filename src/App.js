@@ -1,7 +1,7 @@
 import React from 'react';
 import Arrays from './components/Arrays';
 import AsyncValidation from './components/AsyncValidation';
-// import { AsyncSubmit, Basic } from './components/basic/';
+// import { AsyncSubmit } from './components/basic/';
 import Checkbox from './components/Checkbox';
 import CombinedValidations from './components/CombinedValidations';
 import CustomInputs from './components/CustomInputs';
