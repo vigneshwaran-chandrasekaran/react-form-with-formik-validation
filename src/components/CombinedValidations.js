@@ -17,14 +17,16 @@ const isRequired = message => value => (!!value ? undefined : message);
 
 const FieldLevelValidation = () => (
 	<>
-		<h3>CombinedValidations Pick a username</h3>
+		<h3 className="CombinedValidations">
+			CombinedValidations Pick a username2
+		</h3>
 		<Formik
 			validationSchema={Schema}
 			validate={validate}
 			initialValues={{
-				username: '',
+				username2: '',
 				email2: '',
-				zip: '',
+				zip2: '',
 			}}
 			onSubmit={values => {
 				sleep(500).then(() => {
@@ -34,19 +36,19 @@ const FieldLevelValidation = () => (
 		>
 			{() => (
 				<Form>
-					<label htmlFor="username">Username</label>
+					<label htmlFor="username2">username2</label>
 					<div>
 						<Field
 							className="form-control"
-							name="username"
+							name="username2"
 							validate={isRequired('This field is required')}
 							type="text"
-							placeholder="username"
+							placeholder="username2"
 						/>
 						<ErrorMessage
 							className="text-danger small"
 							component="div"
-							name="username"
+							name="username2"
 						/>
 					</div>
 					<br />
@@ -68,19 +70,22 @@ const FieldLevelValidation = () => (
 					<div>
 						<Field
 							className="form-control"
-							name="zip"
+							name="zip2"
 							validate={isRequired('This field is required')}
 							type="text"
-							placeholder="zip"
+							placeholder="zip2"
 						/>
 						<ErrorMessage
 							className="text-danger small"
 							component="div"
-							name="zip"
+							name="zip2"
 						/>
 					</div>
 					<br />
-					<button className="btn btn-primary m-2" type="submit">
+					<button
+						className="btn btn-primary m-2 CombinedValidationsBtn"
+						type="submit"
+					>
 						Submit
 					</button>
 					<Debug />
