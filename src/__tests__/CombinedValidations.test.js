@@ -24,6 +24,12 @@ describe('h3 Text', () => {
 			userAgent: '',
 		});
 
+		/**
+		 * we can use data-testid for element selection
+		 * [data-testid="CombinedValidationsBtn"]
+		 * or we can use input slection class selection or id selection
+		 */
+
 		await page.goto('http://localhost:3000/');
 		await page.waitForSelector('.CombinedValidations');
 
@@ -31,6 +37,26 @@ describe('h3 Text', () => {
 		expect(html).toBe('CombinedValidations Pick a username2');
 
 		await page.focus('input[name=username2]');
+
+		await page.click('[data-testid="CombinedValidationsBtn"]');
+
+		const username2Error = await page.$eval(
+			'[data-testid="username2Error"]',
+			e => e.innerHTML
+		);
+		expect(username2Error).toBe('username2 is required');
+
+		const email2Error = await page.$eval(
+			'[data-testid="email2Error"]',
+			e => e.innerHTML
+		);
+		expect(email2Error).toBe('email2 is required');
+
+		const zip2Error = await page.$eval(
+			'[data-testid="zip2Error"]',
+			e => e.innerHTML
+		);
+		expect(zip2Error).toBe('zip2 is required');
 
 		await page.click('input[name=username2]');
 		await page.type('input[name=username2]', person.name);
@@ -40,8 +66,8 @@ describe('h3 Text', () => {
 		await page.click('input[name=zip2]');
 		await page.type('input[name=zip2]', person.zipcode);
 
-		await page.click('button.CombinedValidationsBtn[type=submit]');
+		await page.click('[data-testid="CombinedValidationsBtn"]');
 
-		// browser.close();
+		browser.close();
 	}, 9000000);
 });

@@ -5,7 +5,7 @@ import { Debug } from './Debug';
 import Line from './Line';
 
 const Schema = Yup.object().shape({
-	email2: Yup.string().required('This field is required'),
+	email2: Yup.string().required('email2 is required'),
 });
 
 // Async Validation
@@ -41,11 +41,12 @@ const FieldLevelValidation = () => (
 						<Field
 							className="form-control"
 							name="username2"
-							validate={isRequired('This field is required')}
+							validate={isRequired('username2 is required')}
 							type="text"
 							placeholder="username2"
 						/>
 						<ErrorMessage
+							data-testid="username2Error"
 							className="text-danger small"
 							component="div"
 							name="username2"
@@ -56,11 +57,12 @@ const FieldLevelValidation = () => (
 						<Field
 							className="form-control"
 							name="email2"
-							validate={isRequired('This field is required')}
+							validate={isRequired('email2 is required')}
 							type="text"
 							placeholder="email"
 						/>
 						<ErrorMessage
+							data-testid="email2Error"
 							className="text-danger small"
 							component="div"
 							name="email2"
@@ -71,11 +73,12 @@ const FieldLevelValidation = () => (
 						<Field
 							className="form-control"
 							name="zip2"
-							validate={isRequired('This field is required')}
+							validate={isRequired('zip2 is required')}
 							type="text"
 							placeholder="zip2"
 						/>
 						<ErrorMessage
+							data-testid="zip2Error"
 							className="text-danger small"
 							component="div"
 							name="zip2"
@@ -83,7 +86,8 @@ const FieldLevelValidation = () => (
 					</div>
 					<br />
 					<button
-						className="btn btn-primary m-2 CombinedValidationsBtn"
+						data-testid="CombinedValidationsBtn"
+						className="btn btn-primary m-2"
 						type="submit"
 					>
 						Submit
