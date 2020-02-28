@@ -25,7 +25,7 @@ const Fieldset = ({ name, label, ...rest }) => (
 const initialValues = {
 	email: 'vigneshwaran@chandrasekaran.com',
 	color: 'red',
-	animal: '',
+	animal: undefined,
 	website: 'https://github.com/vigneshwaran-chandrasekaran',
 };
 

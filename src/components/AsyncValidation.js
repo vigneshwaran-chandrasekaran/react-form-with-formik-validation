@@ -36,7 +36,7 @@ const handleOnSubmit = (values, { setSubmitting, resetForm }) => {
 };
 
 const initialValues = {
-	username: '',
+	username: undefined,
 };
 
 const Username = () => (

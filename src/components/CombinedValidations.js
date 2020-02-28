@@ -24,9 +24,9 @@ const FieldLevelValidation = () => (
 			validationSchema={Schema}
 			validate={validate}
 			initialValues={{
-				username2: '',
-				email2: '',
-				zip2: '',
+				username2: undefined,
+				email2: undefined,
+				zip2: undefined,
 			}}
 			onSubmit={values => {
 				sleep(500).then(() => {
