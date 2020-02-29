@@ -17,9 +17,10 @@ import SyncValidation from './components/SyncValidation';
 import FormOne from './components/FormOne';
 import FormTwo from './components/FormTwo';
 import FormThree from './components/FormThree';
+import AllInOneValidation from './components/AllInOneValidation';
 
 function Home() {
-	return <h2>Home</h2>;
+	return <AllInOneValidation />;
 }
 
 function About() {
