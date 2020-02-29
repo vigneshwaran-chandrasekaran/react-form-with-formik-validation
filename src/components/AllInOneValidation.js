@@ -5,7 +5,10 @@ import { Debug } from './Debug';
 import Line from './Line';
 
 const Schema = Yup.object().shape({
-	email2: Yup.string().required('email2 is required'),
+	password: Yup.string().required('Password is required'),
+	passwordConfirmation: Yup.string()
+		.required('passwordConfirmation is required')
+		.oneOf([Yup.ref('password'), null], 'Passwords must match'),
 });
 
 // Async Validation
@@ -17,86 +20,82 @@ const isRequired = message => value => (!!value ? undefined : message);
 
 const AllInOneValidation = () => (
 	<>
-		<h3 className="CombinedValidations">
-			CombinedValidations Pick a username2
-		</h3>
-		<Formik
-			validationSchema={Schema}
-			validate={validate}
-			initialValues={{
-				username2: undefined,
-				email2: undefined,
-				zip2: undefined,
-			}}
-			onSubmit={values => {
-				sleep(500).then(() => {
-					alert(JSON.stringify(values, null, 2));
-				});
-			}}
-		>
-			{() => (
-				<Form>
-					<label htmlFor="username2">username2</label>
-					<div>
-						<Field
-							className="form-control"
-							name="username2"
-							validate={isRequired('username2 is required')}
-							type="text"
-							placeholder="username2"
-						/>
-						<ErrorMessage
-							data-testid="username2Error"
-							className="text-danger small"
-							component="div"
-							name="username2"
-						/>
-					</div>
-					<br />
-					<div>
-						<Field
-							className="form-control"
-							name="email2"
-							validate={isRequired('email2 is required')}
-							type="text"
-							placeholder="email"
-						/>
-						<ErrorMessage
-							data-testid="email2Error"
-							className="text-danger small"
-							component="div"
-							name="email2"
-						/>
-					</div>
-					<br />
-					<div>
-						<Field
-							className="form-control"
-							name="zip2"
-							validate={isRequired('zip2 is required')}
-							type="text"
-							placeholder="zip2"
-						/>
-						<ErrorMessage
-							data-testid="zip2Error"
-							className="text-danger small"
-							component="div"
-							name="zip2"
-						/>
-					</div>
-					<br />
-					<button
-						data-testid="CombinedValidationsBtn"
-						className="btn btn-primary m-2"
-						type="submit"
+		<div className="container">
+			<div className="d-flex flex-row justify-content-center">
+				<div className="col-2"></div>
+				<div className="col-8">
+					<h3 className="AllInOneValidation">
+						All validations in one file
+					</h3>
+					<Formik
+						validationSchema={Schema}
+						validate={validate}
+						initialValues={{
+							password: undefined,
+							passwordConfirmation: undefined,
+						}}
+						onSubmit={values => {
+							sleep(500).then(() => {
+								alert(JSON.stringify(values, null, 2));
+							});
+						}}
 					>
-						Submit
-					</button>
-					<Debug />
-				</Form>
-			)}
-		</Formik>
-		<Line />
+						{() => (
+							<Form>
+								<label htmlFor="password">password</label>
+								<div>
+									<Field
+										className="form-control"
+										name="password"
+										// validate={isRequired(
+										// 	'password is required'
+										// )}
+										type="password"
+										placeholder="password"
+									/>
+									<ErrorMessage
+										className="text-danger small"
+										component="div"
+										name="password"
+									/>
+								</div>
+
+								<br />
+								<div>
+									<label htmlFor="passwordConfirmation">
+										Password Confirmation
+									</label>
+									<Field
+										className="form-control"
+										name="passwordConfirmation"
+										// validate={isRequired(
+										// 	'passwordConfirmation is required'
+										// )}
+										type="password"
+										placeholder="passwordConfirmation"
+									/>
+									<ErrorMessage
+										className="text-danger small"
+										component="div"
+										name="passwordConfirmation"
+									/>
+								</div>
+								<br />
+								<button
+									className="btn btn-primary m-2"
+									type="submit"
+								>
+									Submit
+								</button>
+								<Debug />
+							</Form>
+						)}
+					</Formik>
+					<Line />
+				</div>
+				<div className="col-2"></div>
+			</div>
+		</div>
 	</>
 );
 

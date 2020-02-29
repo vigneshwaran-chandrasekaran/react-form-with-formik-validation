@@ -19,15 +19,7 @@ import FormTwo from './components/FormTwo';
 import FormThree from './components/FormThree';
 import AllInOneValidation from './components/AllInOneValidation';
 
-function Home() {
-	return <AllInOneValidation />;
-}
-
-function About() {
-	return <h2>About</h2>;
-}
-
-function Users() {
+function ExampleValidations() {
 	return (
 		<div className="container">
 			<div className="d-flex flex-row justify-content-center">
@@ -62,13 +54,12 @@ export default function App() {
 				<nav>
 					<ul>
 						<li>
-							<Link to="/">Home</Link>
+							<Link to="/">All validations in one page</Link>
 						</li>
 						<li>
-							<Link to="/about">About</Link>
-						</li>
-						<li>
-							<Link to="/users">Users</Link>
+							<Link to="/exampleValidations">
+								Example Validations
+							</Link>
 						</li>
 					</ul>
 				</nav>
@@ -76,14 +67,11 @@ export default function App() {
 				{/* A <Switch> looks through its children <Route>s and
 			  renders the first one that matches the current URL. */}
 				<Switch>
-					<Route path="/about">
-						<About />
-					</Route>
-					<Route path="/users">
-						<Users />
+					<Route path="/exampleValidations">
+						<ExampleValidations />
 					</Route>
 					<Route path="/">
-						<Home />
+						<AllInOneValidation />
 					</Route>
 				</Switch>
 			</div>
