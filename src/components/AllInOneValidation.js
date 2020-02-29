@@ -5,10 +5,22 @@ import { Debug } from './Debug';
 import Line from './Line';
 
 const Schema = Yup.object().shape({
-	password: Yup.string().required('Password is required'),
+	userName: Yup.string()
+		.required('No userName provided.')
+		.min(8, 'userName is too short - should be 8 chars minimum.')
+		.matches(/[a-zA-Z]/, 'userName can only contain Latin letters.'), // not working change this later
+	password: Yup.string()
+		.required('Password is required')
+		.matches(
+			/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/,
+			'Invalid'
+		), // not working change this later
 	passwordConfirmation: Yup.string()
 		.required('passwordConfirmation is required')
 		.oneOf([Yup.ref('password'), null], 'Passwords must match'),
+	email: Yup.string()
+		.email()
+		.required(),
 });
 
 // Async Validation
@@ -31,6 +43,7 @@ const AllInOneValidation = () => (
 						validationSchema={Schema}
 						validate={validate}
 						initialValues={{
+							userName: undefined,
 							password: undefined,
 							passwordConfirmation: undefined,
 						}}
@@ -42,14 +55,26 @@ const AllInOneValidation = () => (
 					>
 						{() => (
 							<Form>
+								<div>
+									<label htmlFor="userName">userName</label>
+									<Field
+										className="form-control"
+										name="userName"
+										placeholder="userName"
+									/>
+									<ErrorMessage
+										className="text-danger small"
+										component="div"
+										name="userName"
+									/>
+								</div>
+								<br />
+
 								<label htmlFor="password">password</label>
 								<div>
 									<Field
 										className="form-control"
 										name="password"
-										// validate={isRequired(
-										// 	'password is required'
-										// )}
 										type="password"
 										placeholder="password"
 									/>
@@ -68,9 +93,6 @@ const AllInOneValidation = () => (
 									<Field
 										className="form-control"
 										name="passwordConfirmation"
-										// validate={isRequired(
-										// 	'passwordConfirmation is required'
-										// )}
 										type="password"
 										placeholder="passwordConfirmation"
 									/>
