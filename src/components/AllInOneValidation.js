@@ -20,18 +20,25 @@ const users = [
 ];
 
 const Schema = Yup.object().shape({
+	/**
+	 * the lowercase() will not work if we don't specify string() and strict()
+	 */
 	userName: Yup.string()
+		.strict()
 		.required('No userName provided.')
+		.trim('There is empty space')
+		.lowercase('plese use all lowercase')
 		.min(5, 'userName is too short - should be 5 chars minimum.')
 		.test('checkUserNameTaken', 'Username already taken', function(value) {
+			// https://medium.com/@arkadyt/how-does-yup-addmethod-work-creating-custom-validation-functions-with-yup-8fddb71a5470
 			return !users.some(user => user.name === value);
 		}),
 	passwordConfirmation: Yup.string()
 		.required('passwordConfirmation is required')
 		.oneOf([Yup.ref('password'), null], 'Passwords must match'),
-	email: Yup.string()
-		.email()
-		.required(),
+	// email: Yup.string()
+	// 	.email()
+	// 	.required(),
 
 	password: Yup.string().required('This field is required'),
 	changepassword: Yup.string().when('password', {
