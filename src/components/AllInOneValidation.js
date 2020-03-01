@@ -13,10 +13,19 @@ import Line from './Line';
 
 const phoneRegExp = /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/;
 
+const users = [
+	{ id: 1, name: 'Tamilnadu' },
+	{ id: 2, name: 'Germany' },
+	{ id: 3, name: 'Vigneshwaran' },
+];
+
 const Schema = Yup.object().shape({
 	userName: Yup.string()
 		.required('No userName provided.')
-		.min(8, 'userName is too short - should be 8 chars minimum.'),
+		.min(5, 'userName is too short - should be 5 chars minimum.')
+		.test('checkUserNameTaken', 'Username already taken', function(value) {
+			return !users.some(user => user.name === value);
+		}),
 	passwordConfirmation: Yup.string()
 		.required('passwordConfirmation is required')
 		.oneOf([Yup.ref('password'), null], 'Passwords must match'),
@@ -42,8 +51,6 @@ const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
 
 const validate = values => console.log({ values });
 
-const isRequired = message => value => (!!value ? undefined : message);
-
 const AllInOneValidation = () => (
 	<>
 		<div className="container">
@@ -57,11 +64,16 @@ const AllInOneValidation = () => (
 						validationSchema={Schema}
 						validate={validate}
 						initialValues={{
-							userName: undefined,
-							password: undefined,
-							passwordConfirmation: undefined,
-							phoneNumber: undefined,
+							userName: '',
+							password: '',
+							passwordConfirmation: '',
+							phoneNumber: '',
 						}}
+						/**
+						 * Here we are using '' as initial value if you set undefined as initial
+						 * value it will show error `A component is changing an uncontrolled
+						 * input of type undefined to be controlled.`
+						 */
 						onSubmit={values => {
 							sleep(500).then(() => {
 								alert(JSON.stringify(values, null, 2));
@@ -71,6 +83,11 @@ const AllInOneValidation = () => (
 						{() => (
 							<Form>
 								<div>
+									<p className="text-info">
+										If we type Tamilnadu or Germany it will
+										show username already taken error
+										message
+									</p>
 									<label htmlFor="userName">userName</label>
 									<Field
 										className="form-control"
