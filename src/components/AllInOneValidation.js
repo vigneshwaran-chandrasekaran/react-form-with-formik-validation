@@ -4,23 +4,37 @@ import * as Yup from 'yup';
 import { Debug } from './Debug';
 import Line from './Line';
 
+/**
+ * https://codesandbox.io/s/l2r832l8x7
+ *
+ * https://itnext.io/simple-react-form-validation-with-formik-yup-and-or-spected-206ebe9e7dcc
+ * https://www.reactnativeschool.com/build-and-validate-forms-with-formik-and-yup/checking-field-equality-confirm-password
+ */
+
+const phoneRegExp = /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/;
+
 const Schema = Yup.object().shape({
 	userName: Yup.string()
 		.required('No userName provided.')
-		.min(8, 'userName is too short - should be 8 chars minimum.')
-		.matches(/[a-zA-Z]/, 'userName can only contain Latin letters.'), // not working change this later
-	password: Yup.string()
-		.required('Password is required')
-		.matches(
-			/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/,
-			'Invalid'
-		), // not working change this later
+		.min(8, 'userName is too short - should be 8 chars minimum.'),
 	passwordConfirmation: Yup.string()
 		.required('passwordConfirmation is required')
 		.oneOf([Yup.ref('password'), null], 'Passwords must match'),
 	email: Yup.string()
 		.email()
 		.required(),
+
+	password: Yup.string().required('This field is required'),
+	changepassword: Yup.string().when('password', {
+		is: val => (val && val.length > 0 ? true : false),
+		then: Yup.string().oneOf(
+			[Yup.ref('password')],
+			'Both password need to be the same'
+		),
+	}),
+	phoneNumber: Yup.string()
+		.required('Phone number is required')
+		.matches(phoneRegExp, 'Phone number is not valid'),
 });
 
 // Async Validation
@@ -46,6 +60,7 @@ const AllInOneValidation = () => (
 							userName: undefined,
 							password: undefined,
 							passwordConfirmation: undefined,
+							phoneNumber: undefined,
 						}}
 						onSubmit={values => {
 							sleep(500).then(() => {
@@ -100,6 +115,22 @@ const AllInOneValidation = () => (
 										className="text-danger small"
 										component="div"
 										name="passwordConfirmation"
+									/>
+								</div>
+								<br />
+								<div>
+									<label htmlFor="phoneNumber">
+										Phone Number
+									</label>
+									<Field
+										className="form-control"
+										name="phoneNumber"
+										placeholder="phoneNumber"
+									/>
+									<ErrorMessage
+										className="text-danger small"
+										component="div"
+										name="phoneNumber"
 									/>
 								</div>
 								<br />
