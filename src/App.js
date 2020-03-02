@@ -54,7 +54,9 @@ export default function App() {
 				<nav>
 					<ul>
 						<li>
-							<Link to="/">All validations in one page</Link>
+							<Link to="/">
+								All major validations in one form
+							</Link>
 						</li>
 						<li>
 							<Link to="/exampleValidations">
