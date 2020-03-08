@@ -3,6 +3,7 @@ import { Formik, Field, Form, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import { Debug } from './Debug';
 import Line from './Line';
+import Fieldset from '../components/common/FieldSet';
 
 /**
  * https://codesandbox.io/s/l2r832l8x7
@@ -40,7 +41,7 @@ const Schema = Yup.object().shape({
 	// 	.email()
 	// 	.required(),
 
-	password: Yup.string().required('This field is required'),
+	password: Yup.string().required('Password required'),
 	changepassword: Yup.string().when('password', {
 		is: val => (val && val.length > 0 ? true : false),
 		then: Yup.string().oneOf(
@@ -108,6 +109,13 @@ const AllInOneValidation = () => (
 									/>
 								</div>
 								<br />
+
+								<Fieldset
+									type="password"
+									name="password"
+									label="Password"
+									placeholder="Password"
+								/>
 
 								<label htmlFor="password">password</label>
 								<div>
