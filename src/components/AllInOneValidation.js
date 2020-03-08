@@ -95,30 +95,23 @@ const AllInOneValidation = () => (
 									username already taken error message
 								</p>
 
-								<Fieldset
-									name="userName"
-									label="Username"
-									placeholder="Username"
-								/>
+								<Fieldset name="userName" label="Username" />
 
 								<Fieldset
 									type="password"
 									name="password"
 									label="Password"
-									placeholder="Password"
 								/>
 
 								<Fieldset
 									type="password"
 									name="passwordConfirmation"
 									label="Password Confirmation"
-									placeholder="Password Confirmation"
 								/>
 
 								<Fieldset
 									name="phoneNumber"
 									label="Phone Number"
-									placeholder="Phone Number"
 								/>
 
 								<button

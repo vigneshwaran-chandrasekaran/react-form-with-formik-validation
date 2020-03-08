@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Field, ErrorMessage } from 'formik';
 
-function Fieldset({ name, label, ...rest }) {
+function Fieldset({ name, label, placeholder, classNames, ...rest }) {
 	return (
 		<div className="form-group">
 			{label && (
@@ -13,7 +13,13 @@ function Fieldset({ name, label, ...rest }) {
 					{label}
 				</label>
 			)}
-			<Field id={name} name={name} className="form-control" {...rest} />
+			<Field
+				id={name}
+				name={name}
+				placeholder={placeholder ? placeholder : label}
+				className={`form-control ${classNames}`}
+				{...rest}
+			/>
 			<ErrorMessage
 				name={name}
 				className="text-danger small"
@@ -28,8 +34,8 @@ Fieldset.propTypes = {
 };
 
 Fieldset.defaultProps = {
-	label: '',
-	placeholder: '',
+	label: ' ',
+	classNames: '',
 };
 
 export default Fieldset;
