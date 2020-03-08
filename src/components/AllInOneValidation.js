@@ -90,25 +90,16 @@ const AllInOneValidation = () => (
 					>
 						{() => (
 							<Form>
-								<div>
-									<p className="text-info">
-										If we type Tamilnadu or Germany it will
-										show username already taken error
-										message
-									</p>
-									<label htmlFor="userName">userName</label>
-									<Field
-										className="form-control"
-										name="userName"
-										placeholder="userName"
-									/>
-									<ErrorMessage
-										className="text-danger small"
-										component="div"
-										name="userName"
-									/>
-								</div>
-								<br />
+								<p className="text-info">
+									If we type Tamilnadu or Germany it will show
+									username already taken error message
+								</p>
+
+								<Fieldset
+									name="userName"
+									label="Username"
+									placeholder="Username"
+								/>
 
 								<Fieldset
 									type="password"
@@ -117,55 +108,19 @@ const AllInOneValidation = () => (
 									placeholder="Password"
 								/>
 
-								<label htmlFor="password">password</label>
-								<div>
-									<Field
-										className="form-control"
-										name="password"
-										type="password"
-										placeholder="password"
-									/>
-									<ErrorMessage
-										className="text-danger small"
-										component="div"
-										name="password"
-									/>
-								</div>
+								<Fieldset
+									type="password"
+									name="passwordConfirmation"
+									label="Password Confirmation"
+									placeholder="Password Confirmation"
+								/>
 
-								<br />
-								<div>
-									<label htmlFor="passwordConfirmation">
-										Password Confirmation
-									</label>
-									<Field
-										className="form-control"
-										name="passwordConfirmation"
-										type="password"
-										placeholder="passwordConfirmation"
-									/>
-									<ErrorMessage
-										className="text-danger small"
-										component="div"
-										name="passwordConfirmation"
-									/>
-								</div>
-								<br />
-								<div>
-									<label htmlFor="phoneNumber">
-										Phone Number
-									</label>
-									<Field
-										className="form-control"
-										name="phoneNumber"
-										placeholder="phoneNumber"
-									/>
-									<ErrorMessage
-										className="text-danger small"
-										component="div"
-										name="phoneNumber"
-									/>
-								</div>
-								<br />
+								<Fieldset
+									name="phoneNumber"
+									label="Phone Number"
+									placeholder="Phone Number"
+								/>
+
 								<button
 									className="btn btn-primary m-2"
 									type="submit"
