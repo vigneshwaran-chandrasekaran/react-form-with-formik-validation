@@ -57,7 +57,9 @@ const Schema = Yup.object().shape({
 		.min(18, 'Mininum age is 18')
 		.max(100, 'Mininum age is 100')
 		.positive('Positive numbers only allowed'),
-	price: Yup.number().lessThan(200, 'Price should be less than 200'),
+	price: Yup.number()
+		.lessThan(200, 'Price should be less than 200')
+		.moreThan(0, 'Price should more than 0'),
 });
 
 // Async Validation
