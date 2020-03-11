@@ -52,6 +52,7 @@ const Schema = Yup.object().shape({
 	phoneNumber: Yup.string()
 		.required('Phone number is required')
 		.matches(phoneRegExp, 'Phone number is not valid'),
+	age: Yup.number().required('Age required'),
 });
 
 // Async Validation
@@ -76,6 +77,7 @@ const AllInOneValidation = () => (
 							password: '',
 							passwordConfirmation: '',
 							phoneNumber: '',
+							age: '',
 						}}
 						/**
 						 * Here we are using '' as initial value if you set undefined as initial
@@ -113,6 +115,8 @@ const AllInOneValidation = () => (
 									name="phoneNumber"
 									label="Phone Number"
 								/>
+
+								<Fieldset name="age" label="Age" />
 
 								<button
 									className="btn btn-primary m-2"

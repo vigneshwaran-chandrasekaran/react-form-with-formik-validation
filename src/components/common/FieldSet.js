@@ -7,7 +7,7 @@ function Fieldset({ name, label, placeholder, classNames, ...rest }) {
 		<div className="form-group">
 			{label && (
 				<label
-					className="mb-1 font-extra-small text-uppercase text-primary"
+					className="mb-1 text-uppercase text-primary"
 					htmlFor={name}
 				>
 					{label}
