@@ -57,6 +57,7 @@ const Schema = Yup.object().shape({
 		.min(18, 'Mininum age is 18')
 		.max(100, 'Mininum age is 100')
 		.positive('Positive numbers only allowed'),
+	price: Yup.number().lessThan(200, 'Price should be less than 200'),
 });
 
 // Async Validation
@@ -121,6 +122,7 @@ const AllInOneValidation = () => (
 								/>
 
 								<Fieldset name="age" label="Age" />
+								<Fieldset name="price" label="price" />
 
 								<button
 									className="btn btn-primary m-2"
