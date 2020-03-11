@@ -54,7 +54,8 @@ const Schema = Yup.object().shape({
 		.matches(phoneRegExp, 'Phone number is not valid'),
 	age: Yup.number()
 		.required('Age required')
-		.min(18, 'Mininum age is 18'),
+		.min(18, 'Mininum age is 18')
+		.max(100, 'Mininum age is 100'),
 });
 
 // Async Validation
