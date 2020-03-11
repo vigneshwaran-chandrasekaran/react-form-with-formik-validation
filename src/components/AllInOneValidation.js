@@ -28,6 +28,12 @@ const Schema = Yup.object().shape({
 		.required("Father's name required")
 		.strict()
 		.uppercase(),
+	city: Yup.string()
+		.required('City required')
+		.matches(
+			/(Chennai|Tiruchirappalli)/,
+			'City name either contain Chennai or Tiruchirappalli'
+		),
 	userName: Yup.string()
 		.strict()
 		.required('No userName provided.')
@@ -117,6 +123,7 @@ const AllInOneValidation = () => (
 									name="fatherName"
 									label="Father Name"
 								/>
+								<Fieldset name="city" label="City" />
 
 								<Fieldset name="userName" label="Username" />
 
