@@ -52,7 +52,9 @@ const Schema = Yup.object().shape({
 	phoneNumber: Yup.string()
 		.required('Phone number is required')
 		.matches(phoneRegExp, 'Phone number is not valid'),
-	age: Yup.number().required('Age required'),
+	age: Yup.number()
+		.required('Age required')
+		.min(18, 'Mininum age is 18'),
 });
 
 // Async Validation
