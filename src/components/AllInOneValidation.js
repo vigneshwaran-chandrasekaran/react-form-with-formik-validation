@@ -24,6 +24,10 @@ const Schema = Yup.object().shape({
 	/**
 	 * the lowercase() will not work if we don't specify string() and strict()
 	 */
+	fatherName: Yup.string()
+		.required("Father's name required")
+		.strict()
+		.uppercase(),
 	userName: Yup.string()
 		.strict()
 		.required('No userName provided.')
@@ -108,6 +112,11 @@ const AllInOneValidation = () => (
 									If we type Tamilnadu or Germany it will show
 									username already taken error message
 								</p>
+
+								<Fieldset
+									name="fatherName"
+									label="Father Name"
+								/>
 
 								<Fieldset name="userName" label="Username" />
 
