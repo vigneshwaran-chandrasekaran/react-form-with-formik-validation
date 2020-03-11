@@ -61,6 +61,10 @@ const Schema = Yup.object().shape({
 		.lessThan(200, 'Price should be less than 200')
 		.moreThan(0, 'Price should more than 0')
 		.integer('Integer only allowed'),
+	total: Yup.number().truncate(),
+	/**
+	 * negative, truncate, round
+	 */
 });
 
 // Async Validation
@@ -126,6 +130,7 @@ const AllInOneValidation = () => (
 
 								<Fieldset name="age" label="Age" />
 								<Fieldset name="price" label="Price" />
+								<Fieldset name="total" label="Total" />
 
 								<button
 									className="btn btn-primary m-2"
