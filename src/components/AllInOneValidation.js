@@ -47,10 +47,9 @@ const Schema = Yup.object().shape({
 	passwordConfirmation: Yup.string()
 		.required('passwordConfirmation is required')
 		.oneOf([Yup.ref('password'), null], 'Passwords must match'),
-	// email: Yup.string()
-	// 	.email()
-	// 	.required(),
-
+	email: Yup.string()
+		.email()
+		.required(),
 	password: Yup.string().required('Password required'),
 	changepassword: Yup.string().when('password', {
 		is: val => (val && val.length > 0 ? true : false),
@@ -138,12 +137,19 @@ const AllInOneValidation = () => (
 									name="passwordConfirmation"
 									label="Password Confirmation"
 								/>
-								<Fieldset name="age" label="Age" />
+
+								<Fieldset
+									type="number"
+									name="age"
+									label="Age"
+								/>
 
 								<Fieldset
 									name="phoneNumber"
 									label="Phone Number"
 								/>
+
+								<Fieldset name="email" label="Email" />
 
 								<Fieldset
 									type="number"
