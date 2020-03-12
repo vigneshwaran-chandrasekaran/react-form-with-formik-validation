@@ -138,15 +138,23 @@ const AllInOneValidation = () => (
 									name="passwordConfirmation"
 									label="Password Confirmation"
 								/>
+								<Fieldset name="age" label="Age" />
 
 								<Fieldset
 									name="phoneNumber"
 									label="Phone Number"
 								/>
 
-								<Fieldset name="age" label="Age" />
-								<Fieldset name="price" label="Price" />
-								<Fieldset name="total" label="Total" />
+								<Fieldset
+									type="number"
+									name="price"
+									label="Price"
+								/>
+								<Fieldset
+									type="number"
+									name="total"
+									label="Total"
+								/>
 
 								<button
 									className="btn btn-primary m-2"
