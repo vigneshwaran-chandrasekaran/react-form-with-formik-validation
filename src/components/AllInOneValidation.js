@@ -85,8 +85,7 @@ const AllInOneValidation = () => (
 	<>
 		<div className="container">
 			<div className="d-flex flex-row justify-content-center">
-				<div className="col-2"></div>
-				<div className="col-8">
+				<div className="col-12">
 					<h3 className="AllInOneValidation">
 						All validations in one file
 					</h3>
@@ -118,49 +117,73 @@ const AllInOneValidation = () => (
 									username already taken error message
 								</p>
 
-								<Fieldset
-									name="fatherName"
-									label="Father Name"
-								/>
-								<Fieldset name="city" label="City" />
-
-								<Fieldset name="userName" label="Username" />
-
-								<Fieldset
-									type="password"
-									name="password"
-									label="Password"
-								/>
-
-								<Fieldset
-									type="password"
-									name="passwordConfirmation"
-									label="Password Confirmation"
-								/>
-
-								<Fieldset
-									type="number"
-									name="age"
-									label="Age"
-								/>
-
-								<Fieldset
-									name="phoneNumber"
-									label="Phone Number"
-								/>
-
-								<Fieldset name="email" label="Email" />
-
-								<Fieldset
-									type="number"
-									name="price"
-									label="Price"
-								/>
-								<Fieldset
-									type="number"
-									name="total"
-									label="Total"
-								/>
+								<div className="d-flex flex-row justify-content-center">
+									<div className="col-3">
+										<Fieldset
+											name="fatherName"
+											label="Father Name"
+										/>
+									</div>
+									<div className="col-3">
+										<Fieldset name="city" label="City" />
+									</div>
+									<div className="col-3">
+										<Fieldset
+											name="userName"
+											label="Username"
+										/>
+									</div>
+									<div className="col-3">
+										<Fieldset
+											type="password"
+											name="password"
+											label="Password"
+										/>
+									</div>
+								</div>
+								<div className="d-flex flex-row justify-content-center">
+									<div className="col-3">
+										<Fieldset
+											type="password"
+											name="passwordConfirmation"
+											label="Password Confirmation"
+										/>
+									</div>
+									<div className="col-3">
+										<Fieldset
+											type="number"
+											name="age"
+											label="Age"
+										/>
+									</div>
+									<div className="col-3">
+										<Fieldset
+											name="phoneNumber"
+											label="Phone Number"
+										/>
+									</div>
+									<div className="col-3">
+										<Fieldset name="email" label="Email" />
+									</div>
+								</div>
+								<div className="d-flex flex-row justify-content-center">
+									<div className="col-3">
+										<Fieldset
+											type="number"
+											name="price"
+											label="Price"
+										/>
+									</div>
+									<div className="col-3">
+										<Fieldset
+											type="number"
+											name="total"
+											label="Total"
+										/>
+									</div>
+									<div className="col-3"></div>
+									<div className="col-3"></div>
+								</div>
 
 								<button
 									className="btn btn-primary m-2"
@@ -174,7 +197,6 @@ const AllInOneValidation = () => (
 					</Formik>
 					<Line />
 				</div>
-				<div className="col-2"></div>
 			</div>
 		</div>
 	</>
