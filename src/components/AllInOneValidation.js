@@ -191,8 +191,22 @@ const AllInOneValidation = () => (
 											label="Total"
 										/>
 									</div>
-									<div className="col-3"></div>
-									<div className="col-3"></div>
+									<div className="col-3">
+										<Fieldset
+											type="checkbox"
+											name="gender"
+											label="Male"
+											value="Male"
+										/>
+									</div>
+									<div className="col-3">
+										<Fieldset
+											type="checkbox"
+											name="gender"
+											label="Female"
+											value="Female"
+										/>
+									</div>
 								</div>
 
 								<button
