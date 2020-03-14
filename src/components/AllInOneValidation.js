@@ -92,12 +92,22 @@ const AllInOneValidation = () => (
 					<Formik
 						validationSchema={Schema}
 						validate={validate}
+						/**
+						 * on submit button click if we want to show error message means
+						 * we want to give empty value in initialValues,
+						 * otherwise when we touch the field then only error message will be shown
+						 */
 						initialValues={{
+							fatherName: '',
+							city: '',
 							userName: '',
 							password: '',
 							passwordConfirmation: '',
-							phoneNumber: '',
 							age: '',
+							phoneNumber: '',
+							email: '',
+							price: '',
+							total: '',
 						}}
 						/**
 						 * Here we are using '' as initial value if you set undefined as initial
