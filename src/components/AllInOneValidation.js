@@ -39,7 +39,7 @@ const Schema = Yup.object().shape({
 		.required('No userName provided.')
 		.trim('There is empty space')
 		.lowercase('plese use all lowercase')
-		.min(5, 'userName is too short - should be 5 chars minimum.')
+		.min(5, 'userName is too short - should be ${min} chars minimum.')
 		.test('checkUserNameTaken', 'Username already taken', function(value) {
 			// https://medium.com/@arkadyt/how-does-yup-addmethod-work-creating-custom-validation-functions-with-yup-8fddb71a5470
 			return !users.some(user => user.name === value);
@@ -63,12 +63,12 @@ const Schema = Yup.object().shape({
 		.matches(phoneRegExp, 'Phone number is not valid'),
 	age: Yup.number()
 		.required('Age required')
-		.min(18, 'Mininum age is 18')
-		.max(100, 'Mininum age is 100')
+		.min(18, 'Mininum age is ${min}')
+		.max(200, 'Maximum age is ${max}')
 		.positive('Positive numbers only allowed'),
 	price: Yup.number()
-		.lessThan(200, 'Price should be less than 200')
-		.moreThan(0, 'Price should more than 0')
+		.lessThan(200, 'Price should be less than ${less}')
+		.moreThan(0, 'Price should more than ${more}')
 		.integer('Integer only allowed'),
 	total: Yup.number().truncate(),
 	/**
