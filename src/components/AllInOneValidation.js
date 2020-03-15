@@ -193,7 +193,7 @@ const AllInOneValidation = () => (
 									</div>
 									<div className="col-3">
 										<Fieldset
-											type="checkbox"
+											type="radio"
 											name="gender"
 											label="Male"
 											value="Male"
@@ -201,10 +201,44 @@ const AllInOneValidation = () => (
 									</div>
 									<div className="col-3">
 										<Fieldset
-											type="checkbox"
+											type="radio"
 											name="gender"
 											label="Female"
 											value="Female"
+										/>
+									</div>
+								</div>
+								<div className="d-flex flex-row justify-content-center">
+									<div className="col-3">
+										<Fieldset
+											type="checkbox"
+											name="sports"
+											label="Cricket"
+											value="Cricket"
+										/>
+									</div>
+									<div className="col-3">
+										<Fieldset
+											type="checkbox"
+											name="sports"
+											label="Football"
+											value="Football"
+										/>
+									</div>
+									<div className="col-3">
+										<Fieldset
+											type="checkbox"
+											name="sports"
+											label="Tennis"
+											value="Tennis"
+										/>
+									</div>
+									<div className="col-3">
+										<Fieldset
+											type="checkbox"
+											name="sports"
+											label="Hockey"
+											value="Hockey"
 										/>
 									</div>
 								</div>
