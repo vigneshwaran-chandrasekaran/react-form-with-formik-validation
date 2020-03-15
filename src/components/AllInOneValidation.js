@@ -71,6 +71,10 @@ const Schema = Yup.object().shape({
 		.moreThan(0, 'Price should more than ${more}')
 		.integer('Integer only allowed'),
 	total: Yup.number().truncate(),
+	sports: Yup.array()
+		.required('Sports required')
+		.min(1, 'Mininum  ${min} sport is required')
+		.max(2, 'Maximum ${max} sports only allowed'),
 	/**
 	 * negative, truncate, round
 	 */
@@ -108,6 +112,7 @@ const AllInOneValidation = () => (
 							email: '',
 							price: '',
 							total: '',
+							sports: [],
 						}}
 						/**
 						 * Here we are using '' as initial value if you set undefined as initial
