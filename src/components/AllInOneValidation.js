@@ -223,7 +223,6 @@ const AllInOneValidation = () => (
 											name="sports"
 											label="Cricket"
 											value="Cricket"
-											classNames="form-checkbox"
 										/>
 									</div>
 									<div className="col-3">
@@ -232,7 +231,6 @@ const AllInOneValidation = () => (
 											name="sports"
 											label="Football"
 											value="Football"
-											classNames="form-checkbox"
 										/>
 									</div>
 									<div className="col-3">
@@ -241,7 +239,6 @@ const AllInOneValidation = () => (
 											name="sports"
 											label="Tennis"
 											value="Tennis"
-											classNames="form-checkbox"
 										/>
 									</div>
 									<div className="col-3">
@@ -250,7 +247,7 @@ const AllInOneValidation = () => (
 											name="sports"
 											label="Hockey"
 											value="Hockey"
-											classNames="form-checkbox"
+											className="form-checkbox"
 										/>
 									</div>
 								</div>
