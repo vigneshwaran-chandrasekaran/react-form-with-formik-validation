@@ -71,6 +71,7 @@ const Schema = Yup.object().shape({
 		.moreThan(0, 'Price should more than ${more}')
 		.integer('Integer only allowed'),
 	total: Yup.number().truncate(),
+	gender: Yup.string().required('Gender required'),
 	sports: Yup.array()
 		.required('Sports required')
 		.min(1, 'Mininum  ${min} sport is required')
@@ -112,6 +113,7 @@ const AllInOneValidation = () => (
 							email: '',
 							price: '',
 							total: '',
+							gender: '',
 							sports: [],
 						}}
 						/**
@@ -213,6 +215,7 @@ const AllInOneValidation = () => (
 										/>
 									</div>
 								</div>
+								<p>Please select sports</p>
 								<div className="d-flex flex-row justify-content-center">
 									<div className="col-3">
 										<Fieldset
