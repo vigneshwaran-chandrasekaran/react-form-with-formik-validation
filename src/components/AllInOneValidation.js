@@ -247,6 +247,7 @@ const AllInOneValidation = () => (
 											name="sports"
 											label="Hockey"
 											value="Hockey"
+											className="form-checkbox"
 										/>
 									</div>
 								</div>
