@@ -1,6 +1,6 @@
 import React from 'react';
-import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
-
+import { BrowserRouter as Router, Link, Route, Switch } from 'react-router-dom';
+import AllInOneValidation from './components/AllInOneValidation';
 import Arrays from './components/Arrays';
 import AsyncValidation from './components/AsyncValidation';
 // import { AsyncSubmit } from './components/basic/';
@@ -9,15 +9,14 @@ import CombinedValidations from './components/CombinedValidations';
 import CustomInputs from './components/CustomInputs';
 import ErrorMessage from './components/ErrorMessage';
 import FastField from './components/FastField';
-import FastFieldWebExample from './components/FastFieldWebExample';
 import FieldLevelValidation from './components/FieldLevelValidation';
+import FormOne from './components/FormOne';
+import FormThree from './components/FormThree';
+import FormTwo from './components/FormTwo';
 import MultistepWizard from './components/MultistepWizard';
 import SchemaValidation from './components/SchemaValidation';
+import SignUp from './components/SignUp';
 import SyncValidation from './components/SyncValidation';
-import FormOne from './components/FormOne';
-import FormTwo from './components/FormTwo';
-import FormThree from './components/FormThree';
-import AllInOneValidation from './components/AllInOneValidation';
 
 function ExampleValidations() {
 	return (
@@ -63,17 +62,23 @@ export default function App() {
 								Example Validations
 							</Link>
 						</li>
+						<li>
+							<Link to="/signUp">sign up</Link>
+						</li>
 					</ul>
 				</nav>
 
 				{/* A <Switch> looks through its children <Route>s and
 			  renders the first one that matches the current URL. */}
 				<Switch>
-					<Route path="/exampleValidations">
+					<Route exact path="/">
+						<AllInOneValidation />
+					</Route>
+					<Route exact path="/exampleValidations">
 						<ExampleValidations />
 					</Route>
-					<Route path="/">
-						<AllInOneValidation />
+					<Route exact path="/signUp">
+						<SignUp />
 					</Route>
 				</Switch>
 			</div>
